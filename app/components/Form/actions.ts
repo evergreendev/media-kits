@@ -2,7 +2,9 @@
 
 
 import {redirect} from "next/navigation";
-import {addTags, upsertMember} from "@/app/lib/mailchimp";
+import { cookies } from "next/headers";
+import {addTags, upsertMember, mcHash} from "@/app/lib/mailchimp";
+import { encodeUid } from "@/app/lib/userId";
 
 export async function subscribe(prevState: boolean, formData: FormData) {
     const firstName = formData.get("firstName") as string | null;
@@ -27,14 +29,29 @@ export async function subscribe(prevState: boolean, formData: FormData) {
         LNAME: subscriberInfo.lastName
     });
 
+    // Set em_uid cookie with Mailchimp subscriberHash for 180 days
+    try {
+        const hash = mcHash(subscriberInfo.email);
+        const encoded = encodeUid({ version: "v1", vendor: "mc", id: hash });
+        const maxAge = 60 * 60 * 24 * 180; // 180 days in seconds
+        (await cookies()).set("em_uid", encoded, {
+            httpOnly: false,
+            sameSite: "strict",
+            secure: process.env.NODE_ENV === "production",
+            path: "/",
+            maxAge,
+        });
+    } catch (e) {
+        // Non-fatal: proceed without cookie if something goes wrong
+        console.error("Failed to set em_uid cookie", e);
+    }
+
     if (!mediaKitPub){
         redirect(`/${mediaKitPub}/media-kit`);
     }
 
     await addTags(audienceId, subscriberInfo.email, [mediaKitPub]);
 
-
     redirect(`/${mediaKitPub}/media-kit`);
-
 
 }
