@@ -5,7 +5,7 @@ const Page = () => {
 
     return (
         <div className={ "max-w-screen-sm mx-auto p-4"}>
-            <Form logo={Logo} mediaKitUrl="/faces/media-kit" />
+            <Form logo={Logo} mediaKitPub="faces" />
         </div>
     )
 }
