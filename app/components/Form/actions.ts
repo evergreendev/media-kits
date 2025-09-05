@@ -34,9 +34,11 @@ export async function subscribe(prevState: boolean, formData: FormData) {
         const hash = mcHash(subscriberInfo.email);
         const encoded = encodeUid({ version: "v1", vendor: "mc", id: hash });
         const maxAge = 60 * 60 * 24 * 180; // 180 days in seconds
+        // Note: httpOnly is false because the client needs to read this cookie to bypass the form.
+        // Use SameSite=Lax to maintain CSRF protections for top-level navigations while remaining compatible.
         (await cookies()).set("em_uid", encoded, {
             httpOnly: false,
-            sameSite: "strict",
+            sameSite: "lax",
             secure: process.env.NODE_ENV === "production",
             path: "/",
             maxAge,
@@ -47,7 +49,8 @@ export async function subscribe(prevState: boolean, formData: FormData) {
     }
 
     if (!mediaKitPub){
-        redirect(`/${mediaKitPub}/media-kit`);
+        // If mediaKitPub is missing, just redirect to root as a fallback
+        redirect(`/`);
     }
 
     await addTags(audienceId, subscriberInfo.email, [mediaKitPub]);

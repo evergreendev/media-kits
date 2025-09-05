@@ -3,7 +3,9 @@ import Link from "next/link";
 import {StaticImageData} from "next/image";
 import Image from "next/image";
 import { subscribe } from "./actions";
-import {useActionState} from "react";
+import {useActionState, useEffect} from "react";
+import { useRouter } from "next/navigation";
+
 
 type Props = {
     mediaKitPub: string,
@@ -11,6 +13,19 @@ type Props = {
 }
 const Form = ({mediaKitPub, logo}: Props) => {
     const [state, action, pending] = useActionState(subscribe, false)
+    const router = useRouter();
+
+    // If em_uid cookie exists on the client, redirect user straight to the media kit
+    useEffect(() => {
+        try {
+            const match = document.cookie.match(/(?:^|; )em_uid=([^;]+)/);
+            if (match && match[1]) {
+                router.replace(`/${mediaKitPub}/media-kit`);
+            }
+        } catch (e) {
+            // silently ignore
+        }
+    }, [mediaKitPub, router]);
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-white text-black rounded-lg shadow-md">
