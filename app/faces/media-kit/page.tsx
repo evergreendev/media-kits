@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "@/public/faces-logo.png"
 import facesCover from "@/public/faces-cover.png";
 import facesStory from "@/public/faces-story.jpeg";
+import Highlight from "@/app/components/Highlight";
 
 const Page = () => {
 
@@ -28,7 +29,12 @@ const Page = () => {
                 />
             </div>
         </div>
-        <p className="text-slate-900 max-w-prose mx-auto font-serif text-lg mb-4">This annual publication will serve to connect the Black Hills
+        <div className={"flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-8"}>
+            <Highlight text1={"14K"} text2={"High-Income Households Mailed"}/>
+            <Highlight text1={"20K"} text2={"Copies Printed Annually"}/>
+            <Highlight text1={"4K+"} text2={"Businesses Mailed"}/>
+        </div>
+        <p className="text-slate-900 max-w-prose mx-auto font-serif text-xl mb-4">This annual publication will serve to connect the Black Hills
             community with local industry experts. <span className="font-bold italic">Exclusive</span> is the key word
             in this magazine. Only <span className="font-bold italic">one</span> face is featured per industry category.
             There are countless stories to tell in the Black Hills. This region is
@@ -39,8 +45,8 @@ const Page = () => {
             <ExpandableSection icon={doubleSpread} title="Double Page Spread" price="$4,000" description={`16.75" x 10.75"`} tag="double-page-spread"/>
             <ExpandableSection icon={fullPage} title="Full Page" price="$2,500" description={`8.375" x 10.75"`} tag="full-page"/>
         </div>
-        <h2 className="font-bold text-lg text-center text-slate-900">Real PHOTOS. Real STORIES. All YOU.</h2>
-        <p className="text-slate-900 max-w-prose mx-auto font-serif text-lg mb-4">
+        <h2 className="font-bold text-2xl mb-2 text-center text-slate-900">Real PHOTOS. Real STORIES. All YOU.</h2>
+        <p className="text-slate-900 max-w-prose mx-auto font-serif text-xl mb-4">
             Once you’ve secured your category, it’s time to
             conveniently book a time with our editorial team.
             We’ll come to you — wherever you’d like — to snap
@@ -48,6 +54,12 @@ const Page = () => {
             work together to shape your feature into the perfect
             FACES of the Black Hills entry.
         </p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-8">
+            <Highlight text1={"500K+"} text2={"Annual Readership"}/>
+        </div>
+
+
 
     </div>
 }
