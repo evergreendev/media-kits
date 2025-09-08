@@ -22,8 +22,7 @@ export async function upsertMember(listId: string, email: string, mergeFields?: 
     });
 }
 
-export async function addTags(listId: string, email: string, tags: string[]) {
-    const subscriberHash = mcHash(email);
+export async function addTags(listId: string, subscriberHash: string, tags: string[]) {
     return mailchimp.lists.updateListMemberTags(listId, subscriberHash, {
         tags: tags.map((name) => ({ name, status: "active" })),
     });

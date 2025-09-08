@@ -1,5 +1,7 @@
 'use server'
 import mailchimp from "@mailchimp/mailchimp_marketing"
+import {cookies} from 'next/headers'
+import {addTags} from "@/app/lib/mailchimp";
 
 mailchimp.setConfig({
     apiKey: process.env.MAILCHIMP_API_KEY,
@@ -7,11 +9,21 @@ mailchimp.setConfig({
 })
 
 export const tagUser = async (tag:string) => {
-    console.log(tag);
+    const cookieStore = await cookies()
+    const emUid = cookieStore.get('em_uid')
+    const audienceId = process.env.MAILCHIMP_AUDIENCE_ID;
 
-    const response = await mailchimp.ping.get();
+    if (!emUid || !audienceId) {
+        return null
+    }
+    
+    try {
+        await addTags(audienceId, emUid.value.split(":")[2], [tag])
+    } catch (e) {
+        
+    }
 
-    console.log(response);
+
 
     return tag;
 }

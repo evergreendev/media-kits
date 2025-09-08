@@ -53,7 +53,7 @@ export async function subscribe(prevState: boolean, formData: FormData) {
         redirect(`/`);
     }
 
-    await addTags(audienceId, subscriberInfo.email, [mediaKitPub]);
+    await addTags(audienceId, mcHash(subscriberInfo.email), [mediaKitPub]);
 
     redirect(`/${mediaKitPub}/media-kit`);
 
