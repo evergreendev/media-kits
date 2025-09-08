@@ -9,23 +9,28 @@ type Props = {
     title: string,
     description?: string,
     price: string,
+    tag: string,
     icon?: StaticImageData,
 }
 
-const ExpandableSection = ({title, description, price, icon}: Props) => {
+const ExpandableSection = ({title, description, price, icon, tag}: Props) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return <form>
         <button
             formAction={async () => {
-                await tagUser("test")
+                await tagUser(tag)
             }}
-            className="text-center text-slate-900 flex items-center gap-5 bg-white p-4 border border-[#75b543]"
+            className="text-center cursor-pointer text-slate-900 flex items-center gap-5 bg-white p-4 w-80 sm:w-96"
             onClick={() => setIsExpanded(!isExpanded)}>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center mx-auto w-full">
                 {
                     icon &&
-                    <Image src={icon} alt="Icon" width={150} height={150} className={"mx-auto mb-6"} priority={true}/>
+                    <div className="mb-6 w-full flex justify-center">
+                        <div className="h-40 w-full max-w-xs relative">
+                            <Image src={icon} alt="Icon" fill className="object-contain" priority={true}/>
+                        </div>
+                    </div>
                 }
                 <div className="flex items-center gap-2">
                     <div className="flex flex-col items-center">
@@ -37,7 +42,7 @@ const ExpandableSection = ({title, description, price, icon}: Props) => {
                         isExpanded ? <LucideSquareChevronDown/> : <LucideSquareChevronDown className="-rotate-90"/>
                     }
                 </div>
-                <div className={`${isExpanded ? "max-h-screen" : "max-h-0 overflow-hidden"} transition-all duration-300`}>
+                <div className={`${isExpanded ? "max-h-screen" : "max-h-0 overflow-hidden"} transition-all duration-300 w-full`}>
                     <div className="w-full h-px bg-slate-300 my-4"/>
                     {
                         description && <p>{description}</p>

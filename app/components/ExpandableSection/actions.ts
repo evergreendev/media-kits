@@ -20,7 +20,7 @@ export const tagUser = async (tag:string) => {
     try {
         await addTags(audienceId, emUid.value.split(":")[2], [tag])
     } catch (e) {
-        
+
     }
 
 
