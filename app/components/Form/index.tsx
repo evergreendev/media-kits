@@ -27,6 +27,13 @@ const Form = ({mediaKitPub, logo}: Props) => {
         }
     }, [mediaKitPub, router]);
 
+    
+    useEffect(() => {
+        if (state){
+            router.replace(`/${mediaKitPub}/media-kit`);
+        }
+    },[mediaKitPub, router, state])
+
     return (
         <div className="max-w-lg mx-auto p-6 bg-white text-black rounded-lg shadow-md">
             {
