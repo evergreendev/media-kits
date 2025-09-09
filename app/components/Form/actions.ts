@@ -56,7 +56,7 @@ export async function subscribe(prevState: boolean, formData: FormData) {
     try {
         await addTags(audienceId, mcHash(subscriberInfo.email), [mediaKitPub]);
     }catch(e) {
-
+        console.error("Failed to add tags", e);
     }
 
     return true;
