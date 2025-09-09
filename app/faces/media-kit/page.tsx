@@ -14,7 +14,7 @@ import Link from "next/link";
 
 const Page = () => {
 
-    return <div className="p-4 max-w-screen-lg mx-auto w-full bg-white">
+    return <div className="p-4 max-w-screen-lg mx-auto w-full bg-white shadow-lg">
         <Image src={logo} alt="Logo" width={200} height={200} className={"mx-auto mb-6 w-full max-w-screen-sm"}
                priority={true}/>
         <div className="mx-auto mb-8 flex w-full max-w-3xl items-center justify-center gap-4 sm:gap-6">
