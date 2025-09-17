@@ -35,7 +35,7 @@ const Page = () => {
                 />
             </div>
         </div>
-        <div className={"flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8"}>
+        <div className={"flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8 text-slate-900"}>
             <Highlight text1={"14K"} text2={"High-Income Households Mailed"}/>
             <Highlight text1={"20K"} text2={"Copies Printed Annually"}/>
             <Highlight text1={"4K+"} text2={"Businesses Mailed"}/>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { subscribe } from "./actions";
 import {useActionState, useEffect} from "react";
 import { useRouter } from "next/navigation";
+import {tagUser} from "@/app/components/ExpandableSection/actions";
 
 
 type Props = {
@@ -17,14 +18,17 @@ const Form = ({mediaKitPub, logo}: Props) => {
 
     // If em_uid cookie exists on the client, redirect user straight to the media kit
     useEffect(() => {
-        try {
-            const match = document.cookie.match(/(?:^|; )em_uid=([^;]+)/);
-            if (match && match[1]) {
-                router.replace(`/${mediaKitPub}/media-kit`);
+        (async () => {
+            try {
+                const match = document.cookie.match(/(?:^|; )em_uid=([^;]+)/);
+                if (match && match[1]) {
+                    await tagUser(mediaKitPub);
+                    router.replace(`/${mediaKitPub}/media-kit`);
+                }
+            } catch (e) {
+                // silently ignore
             }
-        } catch (e) {
-            // silently ignore
-        }
+        })();
     }, [mediaKitPub, router]);
 
     

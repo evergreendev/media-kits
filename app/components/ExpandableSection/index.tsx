@@ -1,5 +1,5 @@
 "use client"
-import {useState} from "react";
+import {useState, ReactNode} from "react";
 import {StaticImageData} from "next/image";
 import {LucideSquareChevronDown} from "lucide-react";
 import {tagUser} from "./actions";
@@ -7,8 +7,8 @@ import Image from "next/image";
 
 type Props = {
     title: string,
-    description?: string,
-    price: string,
+    description?: ReactNode,
+    price: ReactNode,
     tag: string,
     icon?: StaticImageData,
 }
@@ -36,7 +36,11 @@ const ExpandableSection = ({title, description, price, icon, tag}: Props) => {
                     <div className="flex flex-col items-center">
 
                         <h2 className="text-xl font-bold">{title}</h2>
-                        <p className="text-gray-400">(learn more)</p>
+                        <div>
+                            {description}
+                        </div>
+                        <p className="text-gray-400">(view price)</p>
+
                     </div>
                     {
                         isExpanded ? <LucideSquareChevronDown/> : <LucideSquareChevronDown className="-rotate-90"/>
@@ -44,10 +48,8 @@ const ExpandableSection = ({title, description, price, icon, tag}: Props) => {
                 </div>
                 <div className={`${isExpanded ? "max-h-screen" : "max-h-0 overflow-hidden"} transition-all duration-300 w-full`}>
                     <div className="w-full h-px bg-slate-300 my-4"/>
-                    {
-                        description && <p>{description}</p>
-                    }
-                    <p className="text-lg font-bold">{price}</p>
+
+                    <div className="text-lg font-bold">{price}</div>
                 </div>
             </div>
         </button>
