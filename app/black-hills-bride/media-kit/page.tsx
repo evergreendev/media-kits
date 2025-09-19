@@ -31,7 +31,7 @@ const Page = () => {
 
     return <div className="max-w-screen-lg mx-auto w-full bg-white shadow-lg">
         <div className="p-4"><Image src={logo} alt="Logo" width={450} height={200}
-                                    className={"mx-auto mb-6 max-w-screen-sm w-full"}
+                                    className={"mx-auto mb-6 max-w-screen-sm w-full sm:w-96"}
                                     priority={true}/>
             <p className="text-slate-900 max-w-prose mx-auto font-serif text-xl mb-4">Weddings are the biggest day of a
                 couple’s life. With all the options available and planning involved, couples can quickly become
