@@ -3,6 +3,9 @@ import doubleSpread from "@/public/bride/bride-double.png";
 import fullPage from "@/public/bride/bride-full.png";
 import halfPageH from "@/public/bride/bride-half-h.png";
 import halfPageV from "@/public/bride/bride-half-v.png";
+import little from "@/public/bride/little.jpeg";
+import lovely from "@/public/bride/lovely.jpeg";
+import luxury from "@/public/bride/luxury.jpeg";
 
 import Image from "next/image";
 import logo from "@/public/bride/bride-logo.png"
@@ -194,6 +197,78 @@ const Page = () => {
                                tag="professional-spotlight"/>
         </div>
 
+        <div className="flex flex-wrap justify-between my-8 p-4">
+        <ExpandableSection
+            description={
+                <>
+                    <div className="flex items-center">
+                        <div>
+                            <p>A perfect place to start. Let us connect you directly to our community by utilizing our digital expertise</p>
+                        </div>
+                    </div>
+                    <ul className="list-disc list-inside space-y-2">
+                        <li><span className="font-bold">Cover Photo Feature</span><br/>
+                            asset creation + used on Black Hills Bride social for 1 week</li>
+
+                        <li><span className="font-bold">Social Post Feature + Pin</span><br/>
+                            asset creation + pinned on Black Hills Bride social for 1 week</li>
+
+                        <li>
+                            <span className="font-bold">Newsletter Feature</span><br/>
+                            ad placement within Black Hills Bride newsletter</li>
+
+                        <li>
+                            <span className="font-bold">20,000 BHB Website Impressions</span><br/>
+                            banner + skyscraper ad positions on Black Hills Bride website</li>
+                    </ul>
+                </>
+            }
+            icon={little} title="Little Bouquet" price="$580 / $495 Add-on with Print Ad purchase" tag="digital-ad-package"/>
+
+        <ExpandableSection
+            description={
+                <>
+                    <div className="flex items-center">
+                        <div>
+                            <p>This package adds the ability to customize in several ways.</p>
+                        </div>
+                    </div>
+                    <ul className="list-disc list-inside space-y-2">
+                        <li><span className="font-bold">Everything in Little, plus:</span></li>
+                        <li><span className="font-bold">Additional week added to cover photo & pin features</span><br/>
+                            asset creation + used on Black Hills Bride social for 2 weeks total</li>
+
+                        <li><span className="font-bold">Additional Newsletter Feature</span><br/>
+                            2 total features within Black Hills Bride newsletters</li>
+
+                        <li><span className="font-bold">+5,000 BHB Website Impressions</span><br/>
+                            banner + skyscraper ad positions on Black Hills Bride website</li>
+
+                        <li><span className="font-bold">+25,000 Off-Site Digital Display Impressions</span><br/>
+                            highly targeted digital ad campaign on high traffic app/web platforms</li>
+                    </ul>
+                </>
+            }
+            icon={lovely} title="Lovely Bouquet" price="$1205 / $1000 Add-on with Print Ad purchase" tag="digital-ad-package"/>
+
+            <ExpandableSection
+                description={
+                    <>
+                        <div className="flex items-center">
+                            <div>
+                                <p>This package adds the ability to customize in several ways.</p>
+                            </div>
+                        </div>
+                        <ul className="list-disc list-inside space-y-2">
+                            <li><span className="font-bold">Everything in Little & Lovely, plus:</span></li>
+                            <li><span className="font-bold">+250,000ct Off-Site Dedicated Newsletter</span><br/>
+                                250,000 targeted local emails</li>
+                        </ul>
+                    </>
+                }
+                icon={luxury} title="Luxury Bouquet" price="$1705 / $1450 Add-on with Print Ad purchase" tag="digital-ad-package"/>
+        </div>
+
         <div className="flex p-5 flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 mb-8 bg-[#6f9488] text-white">
             <div className="text-white flex flex-col items-center sm:flex-row justify-start mt-8 gap-4 sm:gap-8 mb-8">
                 <div>
@@ -208,13 +283,8 @@ const Page = () => {
                     <Link href="tel:+16053437684" >605.343.7684</Link>
                     <p>329 Main St. Suite 1., Rapid City</p>
                 </div>
-
-
-
             </div>
         </div>
-
-
     </div>
 }
 
