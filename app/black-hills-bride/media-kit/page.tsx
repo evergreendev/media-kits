@@ -199,6 +199,7 @@ const Page = () => {
 
         <div className="flex flex-wrap justify-between my-8 p-4">
         <ExpandableSection
+            leftAlign
             description={
                 <>
                     <div className="flex items-center">
@@ -226,6 +227,7 @@ const Page = () => {
             icon={little} title="Little Bouquet" price="$580 / $495 Add-on with Print Ad purchase" tag="digital-ad-package"/>
 
         <ExpandableSection
+            leftAlign
             description={
                 <>
                     <div className="flex items-center">
@@ -252,6 +254,7 @@ const Page = () => {
             icon={lovely} title="Lovely Bouquet" price="$1205 / $1000 Add-on with Print Ad purchase" tag="digital-ad-package"/>
 
             <ExpandableSection
+                leftAlign
                 description={
                     <>
                         <div className="flex items-center">
