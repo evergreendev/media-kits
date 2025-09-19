@@ -188,7 +188,7 @@ const Page = () => {
                                        <p>Float 5”w x 8”h</p>
                                    </>
                                }
-                               tag="double-page-spread"/>
+                               tag="double-page-spread-bride"/>
 
             <ExpandableSection icon={fullPage} title="Full Page"
                                price={
@@ -202,7 +202,7 @@ const Page = () => {
                                    <p>Bleed 6”w x 9.25”h</p>
                                    <p>Float 5”w x 8”h</p>
                                </>}
-                               tag="full-page"/>
+                               tag="full-page-bride"/>
             <ExpandableSection icon={halfPageH} title="Half Page H" price={
                 <>
                     $845
@@ -213,7 +213,7 @@ const Page = () => {
                 <p>Horizontal</p>
                 <p>4.87”w x 3.97”h</p>
             </>}
-                               tag="half-page"/>
+                               tag="half-page-bride"/>
             <ExpandableSection icon={halfPageV} title="Half Page H" price={
                 <>
                     $845
@@ -223,13 +223,13 @@ const Page = () => {
                 <p>Vertical</p>
                 <p>2.35”w x 8.04”h</p>
             </>}
-                               tag="half-page"/>
+                               tag="half-page-bride"/>
             <ExpandableSection icon={spotlight} title="Professional Spotlight" price="$1,485"
                                description={
                                    <>
                                        <p>Let them see you in your best light!</p>
                                    </>}
-                               tag="professional-spotlight"/>
+                               tag="professional-spotlight-bride"/>
         </div>
 
         <div className="items-start p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
@@ -266,7 +266,7 @@ const Page = () => {
                         </>
                     }
                     icon={little} title="Little Bouquet" price="$580 / $495 Add-on with Print Ad purchase"
-                    tag="digital-ad-package"/>
+                    tag="digital-ad-package-bride"/>
 
                 <ExpandableSection
                     leftAlign
@@ -299,7 +299,7 @@ const Page = () => {
                         </>
                     }
                     icon={lovely} title="Lovely Bouquet" price="$1205 / $1000 Add-on with Print Ad purchase"
-                    tag="digital-ad-package"/>
+                    tag="digital-ad-package-bride"/>
 
                 <ExpandableSection
                     leftAlign
@@ -319,7 +319,7 @@ const Page = () => {
                         </>
                     }
                     icon={luxury} title="Luxury Bouquet" price="$1705 / $1450 Add-on with Print Ad purchase"
-                    tag="digital-ad-package"/>
+                    tag="digital-ad-package-bride"/>
             </div>
             <div className="sticky top-12 grid content-start sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
                 <div>
