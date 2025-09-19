@@ -1,7 +1,7 @@
 "use client"
 import {useState, ReactNode} from "react";
 import {StaticImageData} from "next/image";
-import {LucideSquareChevronDown} from "lucide-react";
+import {ChevronDownIcon} from "lucide-react";
 import {tagUser} from "./actions";
 import Image from "next/image";
 
@@ -43,9 +43,7 @@ const ExpandableSection = ({title, description, price, icon, tag, leftAlign = fa
                         <p className="text-gray-400">(view price)</p>
 
                     </div>
-                    {
-                        isExpanded ? <LucideSquareChevronDown/> : <LucideSquareChevronDown className="-rotate-90"/>
-                    }
+                    <ChevronDownIcon className={`w-20 transition-all ${isExpanded ? "":"-rotate-90"}`}/>
                 </div>
                 <div className={`${isExpanded ? "max-h-screen" : "max-h-0 overflow-hidden"} transition-all duration-300 w-full`}>
                     <div className="w-full h-px bg-slate-300 my-4"/>

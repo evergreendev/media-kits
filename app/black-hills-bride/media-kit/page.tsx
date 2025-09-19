@@ -16,6 +16,14 @@ import pinterest from "@/public/bride/pinterest.png"
 import issuuLogo from "@/public/issuu-logo.png";
 import pageViews from "@/public/bride/bhb-page-view.png";
 import spotlight from "@/public/bride/spotlight.png";
+import digital from "@/public/bride/digital.png";
+import digital1 from "@/public/bride/digital-2.png";
+
+import fullAd from "@/public/bride/full.png";
+import halfAdH from "@/public/bride/half-h.png";
+import halfAdV from "@/public/bride/vertical-half.png"
+import doublePage from "@/public/bride/2-page.png";
+
 import Link from "next/link";
 import {Facebook, Instagram} from "lucide-react";
 
@@ -23,7 +31,7 @@ const Page = () => {
 
     return <div className="max-w-screen-lg mx-auto w-full bg-white shadow-lg">
         <div className="p-4"><Image src={logo} alt="Logo" width={450} height={200}
-                                    className={"mx-auto mb-6 max-w-screen-sm"}
+                                    className={"mx-auto mb-6 max-w-screen-sm w-full"}
                                     priority={true}/>
             <p className="text-slate-900 max-w-prose mx-auto font-serif text-xl mb-4">Weddings are the biggest day of a
                 couple’s life. With all the options available and planning involved, couples can quickly become
@@ -166,25 +174,52 @@ const Page = () => {
         </div>
 
         <div className="flex flex-wrap justify-center my-8">
-            <ExpandableSection icon={doubleSpread} title="Double Page Spread" price="$2,275"
+            <ExpandableSection icon={doubleSpread} title="Double Page Spread"
+                               price={
+                <>
+                    $2,275
+                    <Image alt="" src={doublePage}/>
+                </>
+
+            }
                                description={
                                    <>
                                        <p>Bleed 6”w x 9.25”h</p>
                                        <p>Float 5”w x 8”h</p>
-                                   </>}
+                                   </>
+                               }
                                tag="double-page-spread"/>
 
-            <ExpandableSection icon={fullPage} title="Full Page" price="$1,230" description={<>
-                <p>Bleed 6”w x 9.25”h</p>
-                <p>Float 5”w x 8”h</p>
-            </>}
+            <ExpandableSection icon={fullPage} title="Full Page"
+                               price={
+                                   <>
+                                       $1,230
+                                       <Image className="w-2/3 mx-auto" src={fullAd} alt=""/>
+                                   </>
+                               }
+                               description={<>
+
+                                   <p>Bleed 6”w x 9.25”h</p>
+                                   <p>Float 5”w x 8”h</p>
+                               </>}
                                tag="full-page"/>
-            <ExpandableSection icon={halfPageH} title="Half Page H" price="$845" description={<>
+            <ExpandableSection icon={halfPageH} title="Half Page H" price={
+                <>
+                    $845
+                    <Image className="w-2/3 mx-auto" src={halfAdH} alt=""/>
+                </>
+            } description={<>
+
                 <p>Horizontal</p>
                 <p>4.87”w x 3.97”h</p>
             </>}
                                tag="half-page"/>
-            <ExpandableSection icon={halfPageV} title="Half Page H" price="$845" description={<>
+            <ExpandableSection icon={halfPageV} title="Half Page H" price={
+                <>
+                    $845
+                    <Image className="w-2/3 mx-auto" src={halfAdV} alt=""/>
+                </>
+            } description={<>
                 <p>Vertical</p>
                 <p>2.35”w x 8.04”h</p>
             </>}
@@ -197,82 +232,130 @@ const Page = () => {
                                tag="professional-spotlight"/>
         </div>
 
-        <div className="flex flex-wrap justify-between my-8 p-4">
-        <ExpandableSection
-            leftAlign
-            description={
-                <>
-                    <div className="flex items-center">
-                        <div>
-                            <p>A perfect place to start. Let us connect you directly to our community by utilizing our digital expertise</p>
-                        </div>
-                    </div>
-                    <ul className="list-disc list-inside space-y-2">
-                        <li><span className="font-bold">Cover Photo Feature</span><br/>
-                            asset creation + used on Black Hills Bride social for 1 week</li>
-
-                        <li><span className="font-bold">Social Post Feature + Pin</span><br/>
-                            asset creation + pinned on Black Hills Bride social for 1 week</li>
-
-                        <li>
-                            <span className="font-bold">Newsletter Feature</span><br/>
-                            ad placement within Black Hills Bride newsletter</li>
-
-                        <li>
-                            <span className="font-bold">20,000 BHB Website Impressions</span><br/>
-                            banner + skyscraper ad positions on Black Hills Bride website</li>
-                    </ul>
-                </>
-            }
-            icon={little} title="Little Bouquet" price="$580 / $495 Add-on with Print Ad purchase" tag="digital-ad-package"/>
-
-        <ExpandableSection
-            leftAlign
-            description={
-                <>
-                    <div className="flex items-center">
-                        <div>
-                            <p>This package adds the ability to customize in several ways.</p>
-                        </div>
-                    </div>
-                    <ul className="list-disc list-inside space-y-2">
-                        <li><span className="font-bold">Everything in Little, plus:</span></li>
-                        <li><span className="font-bold">Additional week added to cover photo & pin features</span><br/>
-                            asset creation + used on Black Hills Bride social for 2 weeks total</li>
-
-                        <li><span className="font-bold">Additional Newsletter Feature</span><br/>
-                            2 total features within Black Hills Bride newsletters</li>
-
-                        <li><span className="font-bold">+5,000 BHB Website Impressions</span><br/>
-                            banner + skyscraper ad positions on Black Hills Bride website</li>
-
-                        <li><span className="font-bold">+25,000 Off-Site Digital Display Impressions</span><br/>
-                            highly targeted digital ad campaign on high traffic app/web platforms</li>
-                    </ul>
-                </>
-            }
-            icon={lovely} title="Lovely Bouquet" price="$1205 / $1000 Add-on with Print Ad purchase" tag="digital-ad-package"/>
-
-            <ExpandableSection
-                leftAlign
-                description={
-                    <>
-                        <div className="flex items-center">
-                            <div>
-                                <p>This package adds the ability to customize in several ways.</p>
+        <div className="items-start p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
+            <div>
+                <ExpandableSection
+                    leftAlign
+                    description={
+                        <>
+                            <div className="flex items-center">
+                                <div>
+                                    <p>A perfect place to start. Let us connect you directly to our community by
+                                        utilizing our digital expertise</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul className="list-disc list-inside space-y-2">
-                            <li><span className="font-bold">Everything in Little & Lovely, plus:</span></li>
-                            <li><span className="font-bold">+250,000ct Off-Site Dedicated Newsletter</span><br/>
-                                250,000 targeted local emails</li>
-                        </ul>
-                    </>
-                }
-                icon={luxury} title="Luxury Bouquet" price="$1705 / $1450 Add-on with Print Ad purchase" tag="digital-ad-package"/>
+                            <ul className="list-disc list-inside space-y-2">
+                                <li><span className="font-bold">Cover Photo Feature</span><br/>
+                                    asset creation + used on Black Hills Bride social for 1 week
+                                </li>
+
+                                <li><span className="font-bold">Social Post Feature + Pin</span><br/>
+                                    asset creation + pinned on Black Hills Bride social for 1 week
+                                </li>
+
+                                <li>
+                                    <span className="font-bold">Newsletter Feature</span><br/>
+                                    ad placement within Black Hills Bride newsletter
+                                </li>
+
+                                <li>
+                                    <span className="font-bold">20,000 BHB Website Impressions</span><br/>
+                                    banner + skyscraper ad positions on Black Hills Bride website
+                                </li>
+                            </ul>
+                        </>
+                    }
+                    icon={little} title="Little Bouquet" price="$580 / $495 Add-on with Print Ad purchase"
+                    tag="digital-ad-package"/>
+
+                <ExpandableSection
+                    leftAlign
+                    description={
+                        <>
+                            <div className="flex items-center">
+                                <div>
+                                    <p>This package adds the ability to customize in several ways.</p>
+                                </div>
+                            </div>
+                            <ul className="list-disc list-inside space-y-2">
+                                <li><span className="font-bold">Everything in Little, plus:</span></li>
+                                <li><span
+                                    className="font-bold">Additional week added to cover photo & pin features</span><br/>
+                                    asset creation + used on Black Hills Bride social for 2 weeks total
+                                </li>
+
+                                <li><span className="font-bold">Additional Newsletter Feature</span><br/>
+                                    2 total features within Black Hills Bride newsletters
+                                </li>
+
+                                <li><span className="font-bold">+5,000 BHB Website Impressions</span><br/>
+                                    banner + skyscraper ad positions on Black Hills Bride website
+                                </li>
+
+                                <li><span className="font-bold">+25,000 Off-Site Digital Display Impressions</span><br/>
+                                    highly targeted digital ad campaign on high traffic app/web platforms
+                                </li>
+                            </ul>
+                        </>
+                    }
+                    icon={lovely} title="Lovely Bouquet" price="$1205 / $1000 Add-on with Print Ad purchase"
+                    tag="digital-ad-package"/>
+
+                <ExpandableSection
+                    leftAlign
+                    description={
+                        <>
+                            <div className="flex items-center">
+                                <div>
+                                    <p>This package adds the ability to customize in several ways.</p>
+                                </div>
+                            </div>
+                            <ul className="list-disc list-inside space-y-2">
+                                <li><span className="font-bold">Everything in Little & Lovely, plus:</span></li>
+                                <li><span className="font-bold">+250,000ct Off-Site Dedicated Newsletter</span><br/>
+                                    250,000 targeted local emails
+                                </li>
+                            </ul>
+                        </>
+                    }
+                    icon={luxury} title="Luxury Bouquet" price="$1705 / $1450 Add-on with Print Ad purchase"
+                    tag="digital-ad-package"/>
+            </div>
+            <div className="sticky top-12 grid content-start sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
+                <div>
+                    <h3 className="text-[#6f9488] text-xl font-bold">Digital Engagement</h3>
+                    <p className="mb-4">Reach your audience where
+                        they are with targeted ads.
+                        Off-Site Ads are available,
+                        and can be focused as
+                        Demographic Targeted,
+                        Geo-Targeted, and
+                        Behaviorally Targeted Ads.
+                        We have made the process
+                        easy for you by developing
+                        three Digital “Bouquets” to
+                        choose from.</p>
+                    <h3 className="text-[#6f9488] text-xl font-bold">Current Issue Online</h3>
+                    <p className="mb-4">Over 9k views of the current
+                        issue online, with hundreds of
+                        Ad Clicks (between 150-800/
+                        yr) directly to your website.</p>
+                    <h3 className="text-[#6f9488] text-xl font-bold">Newsletter Feature</h3>
+                    <p className="mb-4">Connect directly with brides:
+                        our monthly Black Hills Bride
+                        newsletter puts you in the
+                        inbox of 1.2k subscribers.</p>
+                </div>
+                <div className="flex flex-col items-center justify-start gap-5">
+                    <Image src={digital} alt="Cover Photo and social post"/>
+                </div>
+                <Image className="col-span-2" src={digital1} alt="Newsletter and skyscraper ad"/>
+            </div>
         </div>
 
-        <div className="flex p-5 flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 mb-8 bg-[#6f9488] text-white">
+
+        <div
+            className="flex p-5 flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 mb-8 bg-[#6f9488] text-white">
             <div className="text-white flex flex-col items-center sm:flex-row justify-start mt-8 gap-4 sm:gap-8 mb-8">
                 <div>
                     <Image className="w-70" src={egmLogo} alt="Evergreen Media"/>
@@ -283,7 +366,7 @@ const Page = () => {
                     Dates & Deadlines:</p>
                 <div className="text-xl">
                     <Link href="mailto:marek@egrmc.com">marek@egmrc.com | </Link>
-                    <Link href="tel:+16053437684" >605.343.7684</Link>
+                    <Link href="tel:+16053437684">605.343.7684</Link>
                     <p>329 Main St. Suite 1., Rapid City</p>
                 </div>
             </div>
