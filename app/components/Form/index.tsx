@@ -10,14 +10,17 @@ import {tagUser} from "@/app/components/ExpandableSection/actions";
 
 type Props = {
     mediaKitPub: string,
-    logo?: StaticImageData
+    logo?: StaticImageData,
+    autoRedirectOnCookie?: boolean,
+    autoRedirectOnSuccess?: boolean,
 }
-const Form = ({mediaKitPub, logo}: Props) => {
+const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuccess = true}: Props) => {
     const [state, action, pending] = useActionState(subscribe, false)
     const router = useRouter();
 
     // If em_uid cookie exists on the client, redirect user straight to the media kit
     useEffect(() => {
+        if (!autoRedirectOnCookie) return;
         (async () => {
             try {
                 const match = document.cookie.match(/(?:^|; )em_uid=([^;]+)/);
@@ -29,14 +32,15 @@ const Form = ({mediaKitPub, logo}: Props) => {
                 // silently ignore
             }
         })();
-    }, [mediaKitPub, router]);
+    }, [autoRedirectOnCookie, mediaKitPub, router]);
 
     
     useEffect(() => {
+        if (!autoRedirectOnSuccess) return;
         if (state){
             router.replace(`/${mediaKitPub}/media-kit`);
         }
-    },[mediaKitPub, router, state])
+    },[autoRedirectOnSuccess, mediaKitPub, router, state])
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-white text-black rounded-lg shadow-md">
