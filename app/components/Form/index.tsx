@@ -13,8 +13,9 @@ type Props = {
     logo?: StaticImageData,
     autoRedirectOnCookie?: boolean,
     autoRedirectOnSuccess?: boolean,
+    simple?: boolean,
 }
-const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuccess = true}: Props) => {
+const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuccess = true, simple = false}: Props) => {
     const [state, action, pending] = useActionState(subscribe, false)
     const router = useRouter();
 
@@ -47,9 +48,13 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
             {
                 logo && <Image src={logo} alt="Logo" width={200} height={200} className={"mx-auto mb-6"} priority={true} />
             }
-            <h1 className="text-4xl font-bold mb-4 text-center">Advertising & Special Offers - Media Kit Access</h1>
-            <p className="text-gray-600 mb-8">Fill out your info below to see ad sizes, pricing, and seasonal
-                packages.</p>
+            {!simple && (
+                <>
+                    <h1 className="text-4xl font-bold mb-4 text-center">Advertising & Special Offers - Media Kit Access</h1>
+                    <p className="text-gray-600 mb-8">Fill out your info below to see ad sizes, pricing, and seasonal
+                        packages.</p>
+                </>
+            )}
 
             <form className="space-y-4 mb-6" action={action}>
                 <div>
@@ -97,14 +102,16 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
                             Processing...
                         </>
                     ) : (
-                        'Get Access'
+                        simple ? 'submit' : 'Get Access'
                     )}
                 </button>
             </form>
 
-            <Link href={`/${mediaKitPub}/media-kit`} className="text-sm text-gray-500 hover:text-gray-700">
-                Just show me the media kit →
-            </Link>
+            {!simple && (
+                <Link href={`/${mediaKitPub}/media-kit`} className="text-sm text-gray-500 hover:text-gray-700">
+                    Just show me the media kit →
+                </Link>
+            )}
         </div>
     )
 }
