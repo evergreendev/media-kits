@@ -1,355 +1,177 @@
 import ExpandableSection from "@/app/components/ExpandableSection";
-import doubleSpread from "@/public/bride/bride-double.png";
-import fullPage from "@/public/bride/bride-full.png";
-import halfPageH from "@/public/bride/bride-half-h.png";
-import halfPageV from "@/public/bride/bride-half-v.png";
-import little from "@/public/bride/little.jpeg";
-import lovely from "@/public/bride/lovely.jpeg";
-import luxury from "@/public/bride/luxury.jpeg";
+import doubleSpread from "@/public/ad-sizes/double.png";
+import fullPage from "@/public/ad-sizes/full.png";
+import halfPageH from "@/public/ad-sizes/half-h.png";
+import halfPageV from "@/public/ad-sizes/half-v.png";
+import quarterPage from "@/public/ad-sizes/quarter.png";
 
 import Image from "next/image";
-import logo from "@/public/bride/bride-logo.png"
-import brideHero from "@/public/bride/bride-hero.png";
+import logo from "@/public/family/family-logo.webp";
 import Highlight from "@/app/components/Highlight";
-import egmLogo from "@/public/egm-white.png"
-import pinterest from "@/public/bride/pinterest.png"
-import issuuLogo from "@/public/issuu-logo.png";
-import pageViews from "@/public/bride/bhb-page-view.png";
-import spotlight from "@/public/bride/spotlight.png";
-import digital from "@/public/bride/digital.png";
-import digital1 from "@/public/bride/digital-2.png";
-
-import fullAd from "@/public/bride/full.png";
-import halfAdH from "@/public/bride/half-h.png";
-import halfAdV from "@/public/bride/vertical-half.png"
-import doublePage from "@/public/bride/2-page.png";
+import egmLogo from "@/public/egm-white.png";
+import blackHillsFamilyHeader from "@/public/family/covers.png";
 
 import Link from "next/link";
-import {Facebook, Instagram} from "lucide-react";
+import {Facebook, Mail, MonitorSmartphone} from "lucide-react";
 
 const Page = () => {
 
     return <div className="max-w-screen-lg mx-auto w-full bg-white shadow-lg">
-        <div className="p-4"><Image src={logo} alt="Logo" width={450} height={200}
+        <div className="p-4"><Image src={logo} alt="Black Hills Family" width={450} height={200}
                                     className={"mx-auto mb-6 max-w-screen-sm w-full sm:w-96"}
                                     priority={true}/>
-            <p className="text-slate-900 max-w-prose mx-auto font-serif text-xl mb-4">Weddings are the biggest day of a
-                couple’s life. With all the options available and planning involved, couples can quickly become
-                overwhelmed.
-                Black Hills Bride is the region’s #1 wedding resource. We’re 100% local, and couples rely on us for
-                inspiration, tried-and-true advice, and the best local vendors in the industry. Teaming up with us means
-                your business is showcased to hundreds of couples planning their big day in the Black Hills every
-                year.</p>
-            <div className="mx-auto mb-8 flex w-full max-w-3xl items-center justify-center gap-4 sm:gap-6">
-                <div className="relative">
-                    <Image
-                        src={brideHero}
-                        alt=""
-                        className=""
-                        placeholder="empty"
-                    />
+            <div className="text-slate-900 max-w-prose mx-auto font-serif text-xl mb-4 space-y-3">
+                <p>Our readers - local women aged 25-49 - control 85% of household spending (Forbes).</p>
+                <p>Our readers values work/life balance, mental health, and self-care. They&apos;re seeking products and
+                    services that align with their needs and values, and they trust local resources like Black Hills
+                    Family.</p>
+                <p>89% of this valuable demographic engages with printed magazine media (Conde Nast).</p>
+                <p>She is the Chief Purchasing Officer in her household.</p>
+                <p>Combine that engagement with over 3,000 website views per month, 8,000+ Facebook followers, and
+                    3,000+ email subscribers, Black Hills Family offers unmatched access to this market.</p>
+                <p>If your business wants to help shape the purchasing decisions of this financially influential groups,
+                    Black Hills Family is the partner you&apos;ve been waiting for.</p>
+            </div>
+            <Image alt="" className="m-auto mb-4" src={blackHillsFamilyHeader}/>
+
+            <div
+                className={"flex p-5 flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8 bg-[#6f9488] text-white"}>
+                <Highlight text1={"5X"} text2={"Issues Annually"}/>
+                <Highlight text1={"60K"} text2={"Copies Printed Annually"}/>
+                <Highlight text1={"400+"} text2={"Strategic Locations"}/>
+            </div>
+
+            <div className="items-start p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
+                <div className="flex flex-col items-center gap-4">
+                    <ExpandableSection
+                        leftAlign
+                        description={
+                            <>
+                                <p>Premium placement for high-visibility brand positioning.</p>
+                            </>
+                        }
+                        title="Cover Positions" price={<ul className="list-disc list-inside space-y-2">
+                        <li>Inside Front Cover: $1,610</li>
+                        <li>Inside Back Cover: $1,610</li>
+                        <li>Back Cover: $1,610</li>
+                    </ul>} tag="Full Page"/>
+
+                    <ExpandableSection
+                        leftAlign
+                        description={
+                            <>
+                                <p>Tell your story with sponsored editorial content crafted for Black Hills Family
+                                    readers.</p>
+                            </>
+                        }
+                        title="Advertorial" price="$1,500" tag="Advertorial"/>
+
+                    <ExpandableSection
+                        leftAlign
+                        description={
+                            <>
+                                <p>Place your message directly inside the magazine.</p>
+                            </>
+                        }
+                        title="Insert" price="Call for Details" tag="Insert"/>
+                    <ExpandableSection icon={doubleSpread} title="Two Page Spread"
+                                       price={
+                                           <>
+                                               <p>$1,900 2 Page Advertorial</p>
+                                               <p className="text-base font-normal">Bleed: 17&quot; x 11.125&quot;</p>
+                                               <p className="text-base font-normal">Trim: 16.75&quot; x 10.875&quot;</p>
+                                           </>
+
+                                       }
+                                       description={
+                                           <>
+                                               <p>Bleed: 17&quot; x 11.125&quot;</p>
+                                               <p>Trim: 16.75&quot; x 10.875&quot;</p>
+                                           </>
+                                       }
+                                       tag="2 Page Advertorial"/>
+
+                    <ExpandableSection icon={fullPage} title="Full Page"
+                                       price={
+                                           <>
+                                               $1,400
+                                           </>
+                                       }
+                                       description={<>
+                                           <p>Float: 7&quot; x 9.49&quot;</p>
+                                           <p>Bleed: 8.625&quot; x 11.125&quot;</p>
+                                           <p>Trim: 8.375&quot; x 10.875&quot;</p>
+                                       </>}
+                                       tag="Full Page"/>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                    <ExpandableSection icon={halfPageH} title="Half Page H" price={
+                        <>
+                            $950
+                        </>
+                    } description={<>
+
+                        <p>Horizontal</p>
+                        <p>7&quot; x 4.67&quot;</p>
+                    </>}
+                                       tag="Half Page H"/>
+                    <ExpandableSection icon={halfPageV} title="Half Page V" price={
+                        <>
+                            $950
+                        </>
+                    } description={<>
+                        <p>Vertical</p>
+                        <p>3.32&quot; x 9.5&quot;</p>
+                    </>}
+                                       tag="Half Page V"/>
+                    <ExpandableSection icon={quarterPage} title="Quarter Page" price="$650"
+                                       description={
+                                           <>
+                                               <p>3.32&quot; x 4.67&quot;</p>
+                                           </>}
+                                       tag="Quarter Page"/>
                 </div>
             </div>
-            <div className="text-gray-600 text-center grid grid-cols-1 sm:grid-cols-[1fr_2fr_3fr] gap-4 sm:gap-2 ">
-                <div className="flex flex-col items-center justify-center gap-5">
-                    <div className="flex items-center justify-center">
-                        <div className="w-20">
-                            <h3 className="font-bold text-2xl">9.2K</h3>
-                            <p>views</p>
-                        </div>
-                        <Image className="w-12" src={issuuLogo} alt=""/>
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <div className="w-20">
-                            <h3 className="font-bold text-2xl">3.1K</h3>
-                            <p>followers</p>
-                        </div>
-                        <div className="bg-[#6f9488] rounded-full p-2">
-                            <Facebook className="w-8 h-8 text-white"/>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <div className="w-20">
-                            <h3 className="font-bold text-2xl">1.3K</h3>
-                            <p>followers</p>
-                        </div>
-                        <div className="bg-[#6f9488] rounded-full p-2">
-                            <Instagram className="w-8 h-8 text-white"/>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <div className="w-20">
-                            <h3 className="font-bold text-2xl">920</h3>
-                            <p>followers</p>
-                        </div>
-                        <Image className="w-12" src={pinterest} alt=""/>
-                    </div>
-                </div>
-                <div className="flex flex-col text-slate-900 text-left justify-between">
+            <div className="p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
                     <div>
-                        <h3 className="text-[#6f9488] text-lg">Current Issue Online</h3>
-                        <p>
-                            Over 9k views of the current issue online, with hundreds of Ad Clicks (between 150-800/yr)
-                            directly to your website.
+                        <h2 className="text-3xl mb-4 text-slate-950">
+                            Issues Calendar
+                        </h2>
+                        <h3 className="text-[#6f9488] text-xl">Staycations, Camps & Family Adventures</h3>
+                        <p className="mb-4"><span className="font-bold">Distributing in March</span><br/>
+                            Families are dreaming about summer-make sure you&apos;re part of their plans.</p>
+
+                        <h3 className="text-[#6f9488] text-xl">The Military Issue</h3>
+                        <p className="mb-4"><span className="font-bold">Distributing in June</span><br/>
+                            Join us in honoring and supporting the incredible military families of the Black Hills.</p>
+
+                        <h3 className="text-[#6f9488] text-xl">Education & Back To School</h3>
+                        <p className="mb-4"><span className="font-bold">Distributing in August</span><br/>
+                            As families gear up for a new school year, show them you&apos;re ready to support every step.
                         </p>
                     </div>
-                    <h3 className="text-[#6f9488] text-3xl">
-                        Stay<br/>
-                        Connected!
-                    </h3>
+
+                    <div>
+                        <h3 className="text-[#6f9488] text-xl">Holidays</h3>
+                        <p className="mb-4"><span className="font-bold">Distributing in October</span><br/>
+                            Families rely on this issue for holiday activities, shopping, and seasonal planning.</p>
+
+                        <h3 className="text-[#6f9488] text-xl">Wellness</h3>
+                        <p className="mb-4"><span className="font-bold">Distributing in January 2027</span><br/>
+                            Readers are focused on fitness, mental health, and self-care. Position your business as part of
+                            their wellness journey.</p>
+
+                        <h3 className="text-[#6f9488] text-xl">Additional Reach</h3>
+                        <ul className="list-disc list-inside space-y-2">
+                            <li>41,000 annual page views</li>
+                            <li>3,700 direct mail households</li>
+                            <li>3,000+ website views per month</li>
+                            <li>8,000+ Facebook followers</li>
+                            <li>3,000+ email subscribers</li>
+                        </ul>
+                    </div>
                 </div>
-
-                <Image src={pageViews} alt="41K Page Views"/>
-            </div>
-        </div>
-
-        <div
-            className={"flex p-5 flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8 bg-[#6f9488] text-white"}>
-            <Highlight text1={"250+"} text2={"Distribution Locations"}/>
-            <Highlight text1={"5K"} text2={"Copies Printed Annually"}/>
-            <Highlight text1={"750+"} text2={"Bridal Show Distribution"}/>
-        </div>
-
-        <div className="p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
-                <div>
-                    <h2 className="text-3xl mb-4 text-slate-950">
-                        Professional Spotlight
-                    </h2>
-                    <h3 className="text-[#6f9488] text-xl">Vendor Profile</h3>
-                    <p className="mb-4">
-                        Tell your story through sponsored editorial content that is crafted for your business. Pro
-                        Spotlights help our readers make decisions on their wedding vendors by putting a face to the
-                        name.
-                    </p>
-                    <h3 className="text-[#6f9488] text-xl">
-                        Professional Spotlight includes:
-                    </h3>
-
-
-                    <ul className="list-disc list-inside space-y-2">
-                        <li>A full page feature article that tells your story through
-                            photography, design and words. Up to 250 words. One
-                            primary image of you and/or your business.
-                        </li>
-
-                        <li>URL and/or QR code linked to your website.</li>
-
-                        <li>Complete business contact information.</li>
-
-                        <li>A featured blog article. The ability to
-                            share your Pro Spotlight digitally through
-                            the Black Hills Bride Blog at no additional
-                            cost. (a $200 value)
-                        </li>
-
-                        <li>Add an additional print ad of your
-                            choice of size at a 50% discount.
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <p className="mb-4">Publish your company name and website in our Black Hills Bride Vendor Directory.
-                        Add your business
-                        name, contact information, category listing, website link, and your logo or product image
-                        to <Link href="https://BlackHillsBride.com/vendors">BlackHillsBride.com/vendors</Link>
-                    </p>
-                    <h3 className="text-[#6f9488] text-xl">Premium Website Listing</h3>
-                    <p>
-                        Let us connect you directly to our community through your Premium Vendor Listing. This package
-                        adds
-                        the ability to customize your listing in several ways.
-                    </p>
-                    <ul className="list-disc list-inside space-y-2">
-                        <li>Top of page category listing with “Featured” Badge</li>
-                        <li>Logo and up to five images</li>
-                        <li>Google Map</li>
-                        <li>Company description up to 250 words</li>
-                        <li>Newsletter OR Social Media feature</li>
-                        <li>Email link</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div className="flex flex-wrap justify-center my-8">
-            <ExpandableSection icon={doubleSpread} title="Double Page Spread"
-                               price={
-                                   <>
-                                       $2,275
-                                       <Image alt="" src={doublePage}/>
-                                   </>
-
-                               }
-                               description={
-                                   <>
-                                       <p>Bleed 6”w x 9.25”h</p>
-                                       <p>Float 5”w x 8”h</p>
-                                   </>
-                               }
-                               tag="2 Page Spread"/>
-
-            <ExpandableSection icon={fullPage} title="Full Page"
-                               price={
-                                   <>
-                                       $1,230
-                                       <Image className="w-2/3 mx-auto" src={fullAd} alt=""/>
-                                   </>
-                               }
-                               description={<>
-
-                                   <p>Bleed 6”w x 9.25”h</p>
-                                   <p>Float 5”w x 8”h</p>
-                               </>}
-                               tag="Full Page"/>
-            <ExpandableSection icon={halfPageH} title="Half Page H" price={
-                <>
-                    $845
-                    <Image className="w-2/3 mx-auto" src={halfAdH} alt=""/>
-                </>
-            } description={<>
-
-                <p>Horizontal</p>
-                <p>4.87”w x 3.97”h</p>
-            </>}
-                               tag="Half Page H"/>
-            <ExpandableSection icon={halfPageV} title="Half Page V" price={
-                <>
-                    $845
-                    <Image className="w-2/3 mx-auto" src={halfAdV} alt=""/>
-                </>
-            } description={<>
-                <p>Vertical</p>
-                <p>2.35”w x 8.04”h</p>
-            </>}
-                               tag="Half Page V"/>
-            <ExpandableSection icon={spotlight} title="Professional Spotlight" price="$1,485"
-                               description={
-                                   <>
-                                       <p>Let them see you in your best light!</p>
-                                   </>}
-                               tag="Professional Spotlight"/>
-        </div>
-
-        <div className="items-start p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
-            <div>
-                <ExpandableSection
-                    leftAlign
-                    description={
-                        <>
-                            <div className="flex items-center">
-                                <div>
-                                    <p>A perfect place to start. Let us connect you directly to our community by
-                                        utilizing our digital expertise</p>
-                                </div>
-                            </div>
-                            <ul className="list-disc list-inside space-y-2">
-                                <li><span className="font-bold">Cover Photo Feature</span><br/>
-                                    asset creation + used on Black Hills Bride social for 1 week
-                                </li>
-
-                                <li><span className="font-bold">Social Post Feature + Pin</span><br/>
-                                    asset creation + pinned on Black Hills Bride social for 1 week
-                                </li>
-
-                                <li>
-                                    <span className="font-bold">Newsletter Feature</span><br/>
-                                    ad placement within Black Hills Bride newsletter
-                                </li>
-
-                                <li>
-                                    <span className="font-bold">20,000 BHB Website Impressions</span><br/>
-                                    banner + skyscraper ad positions on Black Hills Bride website
-                                </li>
-                            </ul>
-                        </>
-                    }
-                    icon={little} title="Little Bouquet" price="$580 / $495 Add-on with Print Ad purchase"
-                    tag="Digital Ad"/>
-
-                <ExpandableSection
-                    leftAlign
-                    description={
-                        <>
-                            <div className="flex items-center">
-                                <div>
-                                    <p>This package adds the ability to customize in several ways.</p>
-                                </div>
-                            </div>
-                            <ul className="list-disc list-inside space-y-2">
-                                <li><span className="font-bold">Everything in Little, plus:</span></li>
-                                <li><span
-                                    className="font-bold">Additional week added to cover photo & pin features</span><br/>
-                                    asset creation + used on Black Hills Bride social for 2 weeks total
-                                </li>
-
-                                <li><span className="font-bold">Additional Newsletter Feature</span><br/>
-                                    2 total features within Black Hills Bride newsletters
-                                </li>
-
-                                <li><span className="font-bold">+5,000 BHB Website Impressions</span><br/>
-                                    banner + skyscraper ad positions on Black Hills Bride website
-                                </li>
-
-                                <li><span className="font-bold">+25,000 Off-Site Digital Display Impressions</span><br/>
-                                    highly targeted digital ad campaign on high traffic app/web platforms
-                                </li>
-                            </ul>
-                        </>
-                    }
-                    icon={lovely} title="Lovely Bouquet" price="$1205 / $1000 Add-on with Print Ad purchase"
-                    tag="Digital Ad"/>
-
-                <ExpandableSection
-                    leftAlign
-                    description={
-                        <>
-                            <div className="flex items-center">
-                                <div>
-                                    <p>This package adds the ability to customize in several ways.</p>
-                                </div>
-                            </div>
-                            <ul className="list-disc list-inside space-y-2">
-                                <li><span className="font-bold">Everything in Little & Lovely, plus:</span></li>
-                                <li><span className="font-bold">+250,000ct Off-Site Dedicated Newsletter</span><br/>
-                                    250,000 targeted local emails
-                                </li>
-                            </ul>
-                        </>
-                    }
-                    icon={luxury} title="Luxury Bouquet" price="$1705 / $1450 Add-on with Print Ad purchase"
-                    tag="Digital Ad"/>
-            </div>
-            <div className="sticky top-12 grid content-start sm:grid-cols-2 gap-4 sm:gap-6 text-slate-900">
-                <div>
-                    <h3 className="text-[#6f9488] text-xl font-bold">Digital Engagement</h3>
-                    <p className="mb-4">Reach your audience where
-                        they are with targeted ads.
-                        Off-Site Ads are available,
-                        and can be focused as
-                        Demographic Targeted,
-                        Geo-Targeted, and
-                        Behaviorally Targeted Ads.
-                        We have made the process
-                        easy for you by developing
-                        three Digital “Bouquets” to
-                        choose from.</p>
-                    <h3 className="text-[#6f9488] text-xl font-bold">Current Issue Online</h3>
-                    <p className="mb-4">Over 9k views of the current
-                        issue online, with hundreds of
-                        Ad Clicks (between 150-800/
-                        yr) directly to your website.</p>
-                    <h3 className="text-[#6f9488] text-xl font-bold">Newsletter Feature</h3>
-                    <p className="mb-4">Connect directly with brides:
-                        our monthly Black Hills Bride
-                        newsletter puts you in the
-                        inbox of 1.2k subscribers.</p>
-                </div>
-                <div className="flex flex-col items-center justify-start gap-5">
-                    <Image src={digital} alt="Cover Photo and social post"/>
-                </div>
-                <Image className="col-span-2" src={digital1} alt="Newsletter and skyscraper ad"/>
             </div>
         </div>
 
@@ -361,13 +183,19 @@ const Page = () => {
                     <Image className="w-70" src={egmLogo} alt="Evergreen Media"/>
                 </div>
             </div>
+            <div>
+                <Highlight text1="30K" text2="Readers Per Issue"/>
+            </div>
             <div className="text-2xl">
                 <p className="font-bold">For Rates<br/>
                     Dates & Deadlines:</p>
                 <div className="text-xl">
-                    <Link href="mailto:marek@egrmc.com">marek@egmrc.com | </Link>
-                    <Link href="tel:+16053437684">605.343.7684</Link>
-                    <p>329 Main St. Suite 1., Rapid City</p>
+                    <p>Rick</p>
+                    <Link href="mailto:Rick@egmrc.com">Rick@egmrc.com</Link>
+                    <br/>
+                    <Link href="tel:+16053437684,203">605-343-7684 Ext. 203</Link>
+                    <p>329 Main St. Suite 1</p>
+                    <p>Rapid City, SD</p>
                 </div>
             </div>
         </div>

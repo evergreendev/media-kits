@@ -1,8 +1,8 @@
 import ExpandableSection from "@/app/components/ExpandableSection";
-import doubleSpread from "@/public/bride/bride-double.png";
-import fullPage from "@/public/bride/bride-full.png";
-import halfPageH from "@/public/bride/bride-half-h.png";
-import halfPageV from "@/public/bride/bride-half-v.png";
+import doubleSpread from "@/public/ad-sizes/double.png";
+import fullPage from "@/public/ad-sizes/full.png";
+import halfPageH from "@/public/ad-sizes/half-h.png";
+import halfPageV from "@/public/ad-sizes/half-v.png";
 import little from "@/public/bride/little.jpeg";
 import lovely from "@/public/bride/lovely.jpeg";
 import luxury from "@/public/bride/luxury.jpeg";
@@ -19,10 +19,10 @@ import spotlight from "@/public/bride/spotlight.png";
 import digital from "@/public/bride/digital.png";
 import digital1 from "@/public/bride/digital-2.png";
 
-import fullAd from "@/public/bride/full.png";
-import halfAdH from "@/public/bride/half-h.png";
-import halfAdV from "@/public/bride/vertical-half.png"
-import doublePage from "@/public/bride/2-page.png";
+import fullAd from "@/public/ad-sizes/full-preview.png";
+import halfAdH from "@/public/ad-sizes/half-h-preview.png";
+import halfAdV from "@/public/ad-sizes/half-v-preview.png"
+import doublePage from "@/public/ad-sizes/double-page-preview.png";
 
 import Link from "next/link";
 import {Facebook, Instagram} from "lucide-react";
@@ -176,12 +176,12 @@ const Page = () => {
         <div className="flex flex-wrap justify-center my-8">
             <ExpandableSection icon={doubleSpread} title="Double Page Spread"
                                price={
-                <>
-                    $2,275
-                    <Image alt="" src={doublePage}/>
-                </>
+                                   <>
+                                       $2,275
+                                       <Image alt="" src={doublePage}/>
+                                   </>
 
-            }
+                               }
                                description={
                                    <>
                                        <p>Bleed 6”w x 9.25”h</p>
