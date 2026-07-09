@@ -12,7 +12,6 @@ import egmLogo from "@/public/egm-white.png";
 import blackHillsFamilyHeader from "@/public/family/covers.png";
 
 import Link from "next/link";
-import {Facebook, Mail, MonitorSmartphone} from "lucide-react";
 
 const Page = () => {
 
