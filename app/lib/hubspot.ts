@@ -11,6 +11,8 @@ export const AD_SIZES_VIEWED_OPTIONS = {
     "Full Page": "Full Page",
     "full-page": "Full Page",
     "full-page-bride": "Full Page",
+    Cover: "Cover",
+    cover: "Cover",
     "Half Page H": "Half Page H",
     "half-page-h": "Half Page H",
     "half-page-h-bride": "Half Page H",

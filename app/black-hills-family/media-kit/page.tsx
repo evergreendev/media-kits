@@ -53,7 +53,7 @@ const Page = () => {
                         <li>Inside Front Cover: $1,610</li>
                         <li>Inside Back Cover: $1,610</li>
                         <li>Back Cover: $1,610</li>
-                    </ul>} tag="Full Page"/>
+                    </ul>} tag="Cover"/>
 
                     <ExpandableSection
                         leftAlign
