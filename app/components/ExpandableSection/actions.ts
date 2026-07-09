@@ -1,29 +1,54 @@
 'use server'
-import mailchimp from "@mailchimp/mailchimp_marketing"
 import {cookies} from 'next/headers'
-import {addTags} from "@/app/lib/mailchimp";
+import {decodeUid} from "@/app/lib/userId";
+import {updateContactAdSizeViewed, updateContactMediaKitViewed} from "@/app/lib/hubspot";
 
-mailchimp.setConfig({
-    apiKey: process.env.MAILCHIMP_API_KEY,
-    server: process.env.MAILCHIMP_SERVER_PREFIX,
-})
-
-export const tagUser = async (tag:string) => {
+async function getHubSpotContactIdFromCookie() {
     const cookieStore = await cookies()
     const emUid = cookieStore.get('em_uid')
-    const audienceId = process.env.MAILCHIMP_AUDIENCE_ID;
 
-    if (!emUid || !audienceId) {
+
+    if (!emUid) {
+        return null
+    }
+
+    const uid = decodeUid(emUid.value);
+
+    if (!uid) {
+        return null
+    }
+
+    return uid.id;
+}
+
+export const updateMediaKitViewedForUser = async (mediaKitPub:string) => {
+    const contactId = await getHubSpotContactIdFromCookie()
+
+    if (!contactId) {
         return null
     }
     
     try {
-        await addTags(audienceId, emUid.value.split(":")[2], [tag])
+        const contact = await updateContactMediaKitViewed(contactId, mediaKitPub)
+        return contact ? mediaKitPub : null
     } catch (e) {
+        console.error("Failed to update HubSpot media_kit_viewed", e);
+        return null
+    }
+}
 
+export const tagUser = async (tag:string) => {
+    const contactId = await getHubSpotContactIdFromCookie()
+
+    if (!contactId) {
+        return null
     }
 
-
-
-    return tag;
+    try {
+        const contact = await updateContactAdSizeViewed(contactId, tag)
+        return contact ? tag : null
+    } catch (e) {
+        console.error("Failed to update HubSpot ad_sizes_viewed", e);
+        return null
+    }
 }

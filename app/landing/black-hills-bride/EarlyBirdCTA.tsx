@@ -1,5 +1,5 @@
 "use client"
-import {tagUser} from "@/app/components/ExpandableSection/actions";
+import {updateMediaKitViewedForUser} from "@/app/components/ExpandableSection/actions";
 import {useState} from "react";
 import Form from "@/app/components/Form";
 
@@ -13,14 +13,14 @@ export default function EarlyBirdCTA({tag}: Props) {
 
     async function handleClick() {
         try {
-            const result = await tagUser(tag);
+            const result = await updateMediaKitViewedForUser(tag);
             if (result) {
                 setHasClicked(true);
             } else {
                 // No cookie or unable to tag on server — show fallback form to upsert and tag user
                 setShowForm(true);
             }
-        } catch (e) {
+        } catch {
             // If tagging fails for any reason, show the fallback form
             setShowForm(true);
         }

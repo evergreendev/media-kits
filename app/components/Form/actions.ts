@@ -1,10 +1,8 @@
 'use server'
 
-
-import {redirect} from "next/navigation";
 import { cookies } from "next/headers";
-import {addTags, upsertMember, mcHash} from "@/app/lib/mailchimp";
 import { encodeUid } from "@/app/lib/userId";
+import {upsertContactMediaKitViewed} from "@/app/lib/hubspot";
 
 export async function subscribe(prevState: boolean, formData: FormData) {
     const firstName = formData.get("firstName") as string | null;
@@ -12,27 +10,35 @@ export async function subscribe(prevState: boolean, formData: FormData) {
     const email: string | null = formData.get("email") as string | null;
     const mediaKitPub = formData.get("mediaKitPub") as string | null;
 
-    const audienceId = process.env.MAILCHIMP_AUDIENCE_ID;
     const subscriberInfo = {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        status: "subscribed",
-        tags: [mediaKitPub],
     }
-    if (!audienceId || !subscriberInfo.email) {
+    if (!subscriberInfo.email || !mediaKitPub) {
         return false;
     }
 
-    await upsertMember(audienceId, subscriberInfo.email, {
-        FNAME: subscriberInfo.firstName,
-        LNAME: subscriberInfo.lastName
-    });
-
-    // Set em_uid cookie with Mailchimp subscriberHash for 180 days
+    let contact;
     try {
-        const hash = mcHash(subscriberInfo.email);
-        const encoded = encodeUid({ version: "v1", vendor: "mc", id: hash });
+        contact = await upsertContactMediaKitViewed({
+            email: subscriberInfo.email,
+            firstName: subscriberInfo.firstName,
+            lastName: subscriberInfo.lastName,
+            mediaKitPub,
+        });
+    } catch (e) {
+        console.error("Failed to update HubSpot contact", e);
+        return false;
+    }
+
+    if (!contact?.id) {
+        return false;
+    }
+
+    // Set em_uid cookie with HubSpot contact id for 180 days
+    try {
+        const encoded = encodeUid({ version: "v1", vendor: "hs", id: contact.id });
         const maxAge = 60 * 60 * 24 * 180; // 180 days in seconds
         // Note: httpOnly is false because the client needs to read this cookie to bypass the form.
         // Use SameSite=Lax to maintain CSRF protections for top-level navigations while remaining compatible.
@@ -46,17 +52,6 @@ export async function subscribe(prevState: boolean, formData: FormData) {
     } catch (e) {
         // Non-fatal: proceed without cookie if something goes wrong
         console.error("Failed to set em_uid cookie", e);
-    }
-
-    if (!mediaKitPub){
-        // If mediaKitPub is missing, just redirect to root as a fallback
-        redirect(`/`);
-    }
-
-    try {
-        await addTags(audienceId, mcHash(subscriberInfo.email), [mediaKitPub]);
-    }catch(e) {
-        console.error("Failed to add tags", e);
     }
 
     return true;

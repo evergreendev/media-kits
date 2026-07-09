@@ -176,12 +176,12 @@ const Page = () => {
         <div className="flex flex-wrap justify-center my-8">
             <ExpandableSection icon={doubleSpread} title="Double Page Spread"
                                price={
-                <>
-                    $2,275
-                    <Image alt="" src={doublePage}/>
-                </>
+                                   <>
+                                       $2,275
+                                       <Image alt="" src={doublePage}/>
+                                   </>
 
-            }
+                               }
                                description={
                                    <>
                                        <p>Bleed 6”w x 9.25”h</p>

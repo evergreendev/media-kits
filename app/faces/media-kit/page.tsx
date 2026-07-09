@@ -50,9 +50,9 @@ const Page = () => {
             of the Hills is the people.</p>
         <div className="flex flex-wrap justify-center my-8">
             <ExpandableSection icon={doubleSpread} title="Double Page Spread" price="$4,000"
-                               description={`16.75" x 10.75"`} tag="double-page-spread"/>
+                               description={`16.75" x 10.75"`} tag="2 Page Spread"/>
             <ExpandableSection icon={fullPage} title="Full Page" price="$2,500" description={`8.375" x 10.75"`}
-                               tag="full-page"/>
+                               tag="Full Page"/>
         </div>
         <div className="mt-10">
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-8 items-center">

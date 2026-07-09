@@ -5,7 +5,7 @@ import Image from "next/image";
 import { subscribe } from "./actions";
 import {useActionState, useEffect} from "react";
 import { useRouter } from "next/navigation";
-import {tagUser} from "@/app/components/ExpandableSection/actions";
+import {updateMediaKitViewedForUser} from "@/app/components/ExpandableSection/actions";
 
 
 type Props = {
@@ -26,10 +26,12 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
             try {
                 const match = document.cookie.match(/(?:^|; )em_uid=([^;]+)/);
                 if (match && match[1]) {
-                    await tagUser(mediaKitPub);
-                    router.replace(`/${mediaKitPub}/media-kit`);
+                    const result = await updateMediaKitViewedForUser(mediaKitPub);
+                    if (result) {
+                        router.replace(`/${mediaKitPub}/media-kit`);
+                    }
                 }
-            } catch (e) {
+            } catch {
                 // silently ignore
             }
         })();
