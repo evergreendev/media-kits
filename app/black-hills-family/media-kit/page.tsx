@@ -21,7 +21,7 @@ const Page = () => {
                                     priority={true}/>
             <div className="text-slate-900 max-w-prose mx-auto font-serif text-xl mb-4 space-y-3">
                 <p>Our readers - local women aged 25-49 - control 85% of household spending (Forbes).</p>
-                <p>Our readers values work/life balance, mental health, and self-care. They&apos;re seeking products and
+                <p>Our readers value work/life balance, mental health, and self-care. They&apos;re seeking products and
                     services that align with their needs and values, and they trust local resources like Black Hills
                     Family.</p>
                 <p>89% of this valuable demographic engages with printed magazine media (Conde Nast).</p>
@@ -49,11 +49,13 @@ const Page = () => {
                                 <p>Premium placement for high-visibility brand positioning.</p>
                             </>
                         }
-                        title="Cover Positions" price={<ul className="list-disc list-inside space-y-2">
-                        <li>Inside Front Cover: $1,610</li>
-                        <li>Inside Back Cover: $1,610</li>
-                        <li>Back Cover: $1,610</li>
-                    </ul>} tag="Cover"/>
+                        title="Cover Positions" price={<div><p className="text-center mb-2">Subject to Availability</p>
+                        <ul className="list-disc list-inside space-y-2">
+                            <li>Inside Front Cover: $1,610</li>
+                            <li>Inside Back Cover: $1,610</li>
+                            <li>Back Cover: $1,610</li>
+                        </ul>
+                    </div>} tag="Cover"/>
 
                     <ExpandableSection
                         leftAlign
@@ -64,7 +66,15 @@ const Page = () => {
                             </>
                         }
                         title="Advertorial" price="$1,500" tag="Advertorial"/>
-
+                    <ExpandableSection leftAlign title="Advertorial - Double Page Spread"
+                                       price="$1,900"
+                                       description={
+                                           <>
+                                               {/*<p>Bleed: 17&quot; x 11.125&quot;</p>
+                                               <p>Trim: 16.75&quot; x 10.875&quot;</p>*/}
+                                           </>
+                                       }
+                                       tag="2 Page Advertorial"/>
                     <ExpandableSection
                         leftAlign
                         description={
@@ -73,22 +83,7 @@ const Page = () => {
                             </>
                         }
                         title="Insert" price="Call for Details" tag="Insert"/>
-                    <ExpandableSection icon={doubleSpread} title="Two Page Spread"
-                                       price={
-                                           <>
-                                               <p>$1,900 2 Page Advertorial</p>
-                                               <p className="text-base font-normal">Bleed: 17&quot; x 11.125&quot;</p>
-                                               <p className="text-base font-normal">Trim: 16.75&quot; x 10.875&quot;</p>
-                                           </>
 
-                                       }
-                                       description={
-                                           <>
-                                               <p>Bleed: 17&quot; x 11.125&quot;</p>
-                                               <p>Trim: 16.75&quot; x 10.875&quot;</p>
-                                           </>
-                                       }
-                                       tag="2 Page Advertorial"/>
 
                     <ExpandableSection icon={fullPage} title="Full Page"
                                        price={
@@ -147,7 +142,8 @@ const Page = () => {
 
                         <h3 className="text-[#6f9488] text-xl">Education & Back To School</h3>
                         <p className="mb-4"><span className="font-bold">Distributing in August</span><br/>
-                            As families gear up for a new school year, show them you&apos;re ready to support every step.
+                            As families gear up for a new school year, show them you&apos;re ready to support every
+                            step.
                         </p>
                     </div>
 
@@ -158,7 +154,8 @@ const Page = () => {
 
                         <h3 className="text-[#6f9488] text-xl">Wellness</h3>
                         <p className="mb-4"><span className="font-bold">Distributing in January 2027</span><br/>
-                            Readers are focused on fitness, mental health, and self-care. Position your business as part of
+                            Readers are focused on fitness, mental health, and self-care. Position your business as part
+                            of
                             their wellness journey.</p>
 
                         <h3 className="text-[#6f9488] text-xl">Additional Reach</h3>
@@ -186,7 +183,7 @@ const Page = () => {
                 <Highlight text1="30K" text2="Readers Per Issue"/>
             </div>
             <div className="text-2xl">
-                <p className="font-bold">For Rates<br/>
+                <p className="font-bold">For<br/>
                     Dates & Deadlines:</p>
                 <div className="text-xl">
                     <p>Rick</p>
