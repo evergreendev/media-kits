@@ -6,6 +6,11 @@ const MEDIA_KIT_PATHS = new Set([
     "black-hills-family",
     "black-hills-bride",
     "faces",
+    "black-hills-visitor",
+    "impact-magazine",
+    "southern-hills-vacation-guide",
+    "sturgis-57785",
+    "digital-evergreen",
 ]);
 
 export async function middleware(req: NextRequest) {
@@ -56,5 +61,15 @@ export const config = {
         "/black-hills-bride/media-kit",
         "/faces",
         "/faces/media-kit",
+        "/black-hills-visitor",
+        "/black-hills-visitor/media-kit",
+        "/impact-magazine",
+        "/impact-magazine/media-kit",
+        "/southern-hills-vacation-guide",
+        "/southern-hills-vacation-guide/media-kit",
+        "/sturgis-57785",
+        "/sturgis-57785/media-kit",
+        "/digital-evergreen",
+        "/digital-evergreen/media-kit",
     ],
 };
