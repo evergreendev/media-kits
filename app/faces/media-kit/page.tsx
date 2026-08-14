@@ -1,2 +1,38 @@
-import PrintMediaKit,{PrintKit} from "@/app/components/PrintMediaKit";
-const kit:PrintKit={title:"FACES of the Black Hills",kicker:"Exclusive. Editorial. Local.",slug:"faces-of-the-black-hills",color:"#4e5147",intro:"This annual publication serves to connect the Black Hills community with local industry experts. Exclusive is the key word in this magazine. Only one face is featured per industry category. There are countless stories to tell in the Black Hills. This region is truly a wonderful place to live and do business. From scenic views and outdoor fun, the Black Hills are a haven. But the real magic of the Hills is the people.",stats:[["14K","High-income households mailed"],["20K","Copies printed annually"],["4K+","Businesses mailed"]],hero:[{src:"/media-kit/faces-of-the-black-hills/visual-02.png",alt:"Faces of the Black Hills editorial spread"},{src:"/media-kit/faces-of-the-black-hills/visual-03.png",alt:"Faces of the Black Hills cover"}],formats:[{name:"Double Page Spread",dimensions:"16.75”w x 10.75”h",price:"$4,000"},{name:"Full Page",dimensions:"8.375”w x 10.75”h",price:"$2,500"}],sections:[{title:"Real PHOTOS. Real STORIES. All YOU.",items:[{heading:"Your portrait",body:"Once you’ve secured your category, conveniently book a time with our editorial team. We’ll come to you — wherever you’d like — to snap your portrait and chat about your story."},{heading:"Your feature",body:"Then we’ll work together to shape your feature into the perfect FACES of the Black Hills entry."},{heading:"Current Issue Online",body:"Over 9.2K views of the current issue online, with a direct link to your website."}]}],online:"500K+ annual readership",website:"facesoftheblackhills.com"};export default function Page(){return <PrintMediaKit kit={kit}/>}
+import PrintMediaKit, {PrintKit} from "@/app/components/PrintMediaKit";
+
+const kit: PrintKit = {
+    title: "FACES of the Black Hills",
+    kicker: "Exclusive. Editorial. Local.",
+    slug: "faces-of-the-black-hills",
+    color: "#4e5147",
+    intro: "This annual publication serves to connect the Black Hills community with local industry experts. Exclusive is the key word in this magazine. Only one face is featured per industry category. There are countless stories to tell in the Black Hills. This region is truly a wonderful place to live and do business. From scenic views and outdoor fun, the Black Hills are a haven. But the real magic of the Hills is the people.",
+    stats: [["14K", "High-income households mailed"], ["20K", "Copies printed annually"], ["4K+", "Businesses mailed"]],
+    hero: [{
+        src: "/media-kit/faces-of-the-black-hills/visual-02.png",
+        alt: "Faces of the Black Hills editorial spread"
+    }, {src: "/media-kit/faces-of-the-black-hills/visual-03.png", alt: "Faces of the Black Hills cover"}],
+    formats: [{name: "Double Page Spread", key: "Faces 2 Page Spread", dimensions: "16.75”w x 10.75”h", price: "$4,000"}, {
+        name: "Full Page",
+        key: "Faces Full Page",
+        dimensions: "8.375”w x 10.75”h",
+        price: "$2,500"
+    }],
+    sections: [{
+        title: "Real PHOTOS. Real STORIES. All YOU.",
+        items: [{
+            heading: "Your portrait",
+            body: "Once you’ve secured your category, conveniently book a time with our editorial team. We’ll come to you — wherever you’d like — to snap your portrait and chat about your story."
+        }, {
+            heading: "Your feature",
+            body: "Then we’ll work together to shape your feature into the perfect FACES of the Black Hills entry."
+        }, {
+            heading: "Current Issue Online",
+            body: "Over 9.2K views of the current issue online, with a direct link to your website."
+        }]
+    }],
+    online: "500K+ annual readership",
+    website: "facesoftheblackhills.com"
+};
+export default function Page() {
+    return <PrintMediaKit kit={kit}/>
+}

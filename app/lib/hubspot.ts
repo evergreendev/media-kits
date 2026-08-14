@@ -15,6 +15,8 @@ export const AD_SIZES_VIEWED_OPTIONS = {
     "double-page-spread-bride": "2 Page Spread",
     "Full Page": "Full Page",
     "full-page": "Full Page",
+    "faces-full-page": "Faces Full Page",
+    "faces-2-page-spread": "Faces 2 Page Spread",
     "full-page-bride": "Full Page",
     Cover: "Cover",
     cover: "Cover",
