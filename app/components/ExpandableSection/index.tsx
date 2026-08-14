@@ -31,7 +31,7 @@ const ExpandableSection = ({title, description, price, icon, tag, leftAlign = fa
                             icon &&
                             <div className={`mb-6 w-full flex ${leftAlign ? "justify-start" : "justify-center"}`}>
                                 <div className="h-40 w-full max-w-xs relative">
-                                    <Image src={icon} alt="Icon" fill className="object-contain" priority={true}/>
+                                    <Image src={icon} alt={`${title} ad size`} fill className="object-contain"/>
                                 </div>
                             </div>
                         }

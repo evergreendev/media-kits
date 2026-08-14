@@ -2,6 +2,11 @@ export const MEDIA_KIT_VIEWED_OPTIONS = {
     "black-hills-family": "Black Hills Family",
     "black-hills-bride": "Black Hills Bride",
     faces: "FACES of The Black Hills",
+    "black-hills-visitor": "Black Hills Visitor",
+    "digital-evergreen": "Digital Evergreen",
+    "impact-magazine": "Impact Magazine",
+    "southern-hills-vacation-guide": "Southern Hills Vacation Guide",
+    "sturgis-57785": "Sturgis 57785",
 } as const;
 
 export const AD_SIZES_VIEWED_OPTIONS = {
