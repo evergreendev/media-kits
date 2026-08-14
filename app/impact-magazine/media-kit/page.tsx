@@ -6,7 +6,7 @@ const kit: PrintKit = {
     slug: "impact-magazine",
     color: "#dd3028",
     intro: "Consumers today have less free time than ever. The last thing they want is to sort through emails, websites, or newspapers to find the best local deals. Impact magazine takes away the guesswork by bringing local coupons and sales directly to their mailbox. Teaming up with us puts your business in front of over 60,000 households and businesses in the Black Hills. Impact magazine is easy for you, and even easier for your customers.",
-    stats: [["6X", "Six issues printed annually"], ["60K", "Mailboxes â€” homes & businesses"], ["1.1Â¢", "As little as â€” per prospect reached"]],
+    stats: [["6X", "Six issues printed annually"], ["60K", "Mailboxes homes & businesses"], ["1.1¢", "As little as 1.1¢ per prospect reached"]],
     hero: [{
         src: "/media-kit/impact-magazine/visual-01.png",
         alt: "Impact magazine coupon covers"

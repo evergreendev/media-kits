@@ -5,7 +5,7 @@ const kit: PrintKit = {
     kicker: "The go-to guide for locals and tourists alike",
     slug: "black-hills-visitor",
     color: "#17647a",
-    intro: "Since 1984, Black Hills Visitor has been the go-to resource for travelers ready to explore, spend, and share. We combine stunning design, smart storytelling, and strategic placement in hotels, attractions, and visitor hubs. Be seen. Be chosen. Be in the guide tourists rely on â€” and act on.",
+    intro: "Since 1984, Black Hills Visitor has been the go-to resource for travelers ready to explore, spend, and share. We combine stunning design, smart storytelling, and strategic placement in hotels, attractions, and visitor hubs. Be seen. Be chosen. Be in the guide tourists rely on and act on.",
     stats: [["800K", "Annual readership"], ["210K", "Copies printed annually"], ["360+", "Delivery locations"]],
     hero: [{
         src: "/media-kit/black-hills-visitor/visual-01.png",
