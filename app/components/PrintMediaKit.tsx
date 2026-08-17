@@ -71,7 +71,7 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
                                               description={<p
                                                   className="whitespace-pre-line text-sm leading-6">{format.dimensions}</p>}
                                               price={format.price ?? (rate ? rateDetails(rate) : "Contact us for pricing")}
-                                              tag={`${kit.slug}: ${format?.key || format.name}`}/>
+                                              tag={`${format?.key || format.name}`}/>
                 })}
                 {additionalOptions.map((row, rowIndex) => <ExpandableSection key={`${row[0]}-${rowIndex}`}
                                                                              title={row[0]} icon={adIcon(row[0])}
