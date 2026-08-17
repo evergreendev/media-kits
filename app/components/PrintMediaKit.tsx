@@ -65,7 +65,8 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
             <div className="mt-6 flex flex-wrap justify-center gap-4">
                 {kit.formats.map(format => {
                     const rate = matchingRate(format.name);
-                    return <ExpandableSection key={format?.key || format.name} title={format.name}
+                    return <ExpandableSection key={format?.key || format.name}
+                                              title={format.name}
                                               icon={adIcon(format.name)}
                                               description={<p
                                                   className="whitespace-pre-line text-sm leading-6">{format.dimensions}</p>}
