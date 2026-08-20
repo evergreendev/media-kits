@@ -26,11 +26,19 @@ const kit: PrintKit = {
         name: "1/2 Page",
         dimensions: "4.875”w x 4”h\nFree lodging or dining listing",
         price: "$1,200"
-    }, {name: "1/4 Page", dimensions: "2.35”w x 4”h", price: "$850"}],
-    table: {
-        headers: ["Premium position", "Rate"],
-        rows: [["Inside Front Cover", "$3,850"], ["Inside Back Cover", "$3,850"], ["Back Cover", "$4,700"]]
-    },
+    }, {name: "1/4 Page", dimensions: "2.35”w x 4”h", price: "$850"}, {
+        name: "Inside Front Cover",
+        dimensions: "Premium position",
+        price: <div><p className="mb-2 text-center">Subject to Availability</p><p>$3,850</p></div>
+    }, {
+        name: "Inside Back Cover",
+        dimensions: "Premium position",
+        price: <div><p className="mb-2 text-center">Subject to Availability</p><p>$3,850</p></div>
+    }, {
+        name: "Back Cover",
+        dimensions: "Premium position",
+        price: <div><p className="mb-2 text-center">Subject to Availability</p><p>$4,700</p></div>
+    }],
     note: "DISTRIBUTION LOCATIONS\nIn-room hotels, Airbnbs, campgrounds, cabins, travel centers, CVBs, and more. Includes a convenient Beer & Wine Tour Map.\n\nFORMAT & REVISIONS\nHigh resolution PDFs (300 dpi) preferred. We accept PDF, JPG, PNG, and EPS. Please convert all RGB colors to CMYK. Email your press-ready PDF ad file to info@egmrc.com. Full Page and Two Page Spread: keep all content 1/2” from gutter. Ad design includes three proofs free of charge. Revisions after the third proof: $15/proof. $75 to purchase your ad design file.\n\nDIGITAL ENGAGEMENT ONLINE\n3,600+ yearly impressions · 8 minute average read time · 89% advertisement clicks · 55% mobile device viewers",
     online: "90K+ Southern Hills VG online annual visitors",
     website: "southernblackhillsvacation.com"

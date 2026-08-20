@@ -14,8 +14,9 @@ type Props = {
     autoRedirectOnCookie?: boolean,
     autoRedirectOnSuccess?: boolean,
     simple?: boolean,
+    showDirectLink?: boolean,
 }
-const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuccess = true, simple = false}: Props) => {
+const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuccess = true, simple = false, showDirectLink = true}: Props) => {
     const [state, action, pending] = useActionState(subscribe, false)
     const router = useRouter();
 
@@ -109,7 +110,7 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
                 </button>
             </form>
 
-            {!simple && (
+            {!simple && showDirectLink && (
                 <Link href={`/${mediaKitPub}/media-kit`} className="text-sm text-gray-500 hover:text-gray-700">
                     Just show me the media kit →
                 </Link>

@@ -6,11 +6,12 @@ import fullPageIcon from "@/public/ad-sizes/full.png";
 import halfPageHIcon from "@/public/ad-sizes/half-h.png";
 import halfPageVIcon from "@/public/ad-sizes/half-v.png";
 import quarterPageIcon from "@/public/ad-sizes/quarter.png";
+import {ReactNode} from "react";
 
 export type PrintKit = {
     title: string; kicker?: string; intro: string; slug: string; color: string;
     stats: [string, string][]; hero: { src: string; alt: string }[];
-    formats: { name: string; dimensions: string; price?: string; key?: string }[];
+    formats: { name: string; dimensions: string; price?: ReactNode; key?: string }[];
     sections?: { title: string; items: { heading: string; body: string }[] }[];
     table?: { headers: string[]; rows: string[][] };
     note?: string; online?: string; website: string;
