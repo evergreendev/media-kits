@@ -31,7 +31,7 @@ const Page = () => {
                 <p>If your business wants to help shape the purchasing decisions of this financially influential groups,
                     Black Hills Family is the partner you&apos;ve been waiting for.</p>
             </div>
-            <Image alt="" className="m-auto mb-4" src={blackHillsFamilyHeader}/>
+            <Image alt="" className="m-auto mb-4 max-w-3xl" src={blackHillsFamilyHeader}/>
 
             <div
                 className={"flex p-5 flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8 bg-[#6f9488] text-white"}>
