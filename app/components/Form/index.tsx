@@ -87,6 +87,20 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
                         required
                     />
                 </div>
+                <div>
+                    <label htmlFor="organizationName" className="text-sm">Organization Name</label>
+                    <input
+                        id="organizationName"
+                        type="text"
+                        name="organizationName"
+                        autoComplete="organization"
+                        placeholder="Organization Name"
+                        className="w-full p-2 border rounded-md"
+                        pattern=".*\S.*"
+                        title="Enter your organization name."
+                        required
+                    />
+                </div>
                 <input type="hidden" name="mediaKitPub" value={mediaKitPub}/>
                 <button
                     type="submit"

@@ -58,6 +58,7 @@ type ContactInput = {
     firstName?: string | null;
     lastName?: string | null;
     mediaKitPub: string;
+    organizationName: string;
 };
 
 function getAccessToken() {
@@ -126,7 +127,7 @@ export async function findContactByEmail(email: string) {
     return data.results?.[0] ?? null;
 }
 
-export async function updateContactMediaKitViewed(contactId: string, mediaKitPub: string) {
+export async function updateContactMediaKitViewed(contactId: string, mediaKitPub: string, organizationName?: string) {
     const mediaKitViewed = getMediaKitViewedValue(mediaKitPub);
 
     if (!mediaKitViewed) {
@@ -138,6 +139,7 @@ export async function updateContactMediaKitViewed(contactId: string, mediaKitPub
         body: JSON.stringify({
             properties: {
                 media_kit_viewed: mediaKitViewed,
+                ...(organizationName !== undefined ? {media_kit_organization_name: organizationName.trim()} : {}),
             },
         }),
     });
@@ -190,6 +192,7 @@ export async function createContactWithMediaKitViewed(input: ContactInput) {
                 email: input.email.trim().toLowerCase(),
                 firstname: input.firstName ?? "",
                 lastname: input.lastName ?? "",
+                media_kit_organization_name: input.organizationName.trim(),
                 media_kit_viewed: mediaKitViewed,
             },
         }),
@@ -200,7 +203,7 @@ export async function upsertContactMediaKitViewed(input: ContactInput) {
     const existingContact = await findContactByEmail(input.email);
 
     if (existingContact) {
-        return updateContactMediaKitViewed(existingContact.id, input.mediaKitPub);
+        return updateContactMediaKitViewed(existingContact.id, input.mediaKitPub, input.organizationName);
     }
 
     return createContactWithMediaKitViewed(input);

@@ -9,13 +9,15 @@ export async function subscribe(prevState: boolean, formData: FormData) {
     const lastName = formData.get("lastName") as string | null;
     const email: string | null = formData.get("email") as string | null;
     const mediaKitPub = formData.get("mediaKitPub") as string | null;
+    const organizationNameValue = formData.get("organizationName");
+    const organizationName = typeof organizationNameValue === "string" ? organizationNameValue.trim() : "";
 
     const subscriberInfo = {
         firstName: firstName,
         lastName: lastName,
         email: email,
     }
-    if (!subscriberInfo.email || !mediaKitPub) {
+    if (!subscriberInfo.email || !mediaKitPub || !organizationName) {
         return false;
     }
 
@@ -26,6 +28,7 @@ export async function subscribe(prevState: boolean, formData: FormData) {
             firstName: subscriberInfo.firstName,
             lastName: subscriberInfo.lastName,
             mediaKitPub,
+            organizationName,
         });
     } catch (e) {
         console.error("Failed to update HubSpot contact", e);
