@@ -1,6 +1,4 @@
 import {NextRequest, NextResponse} from "next/server";
-import {encodeUid} from "@/app/lib/userId";
-import {updateContactMediaKitViewed} from "@/app/lib/hubspot";
 
 const MEDIA_KIT_PATHS = new Set([
     "black-hills-family",
@@ -35,21 +33,11 @@ export async function middleware(req: NextRequest) {
         return NextResponse.next();
     }
 
-    try {
-        await updateContactMediaKitViewed(hubSpotUserId, publication);
-    } catch (e) {
-        console.error("Failed to update HubSpot media_kit_viewed from URL param", e);
-    }
-
+    // A raw contact ID is not proof of identity. Preserve the media kit
+    // destination, but never mint a session or mutate CRM data from this URL.
     const res = NextResponse.redirect(redirectUrl);
-    res.cookies.set("em_uid", encodeUid({version: "v1", vendor: "hs", id: hubSpotUserId}), {
-        httpOnly: false,
-        sameSite: "lax",
-        secure: process.env.NODE_ENV === "production",
-        path: "/",
-        maxAge: 60 * 60 * 24 * 180,
-    });
-
+    res.headers.set("Cache-Control", "private, no-store");
+    res.headers.set("Referrer-Policy", "no-referrer");
     return res;
 }
 

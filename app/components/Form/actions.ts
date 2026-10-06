@@ -1,23 +1,23 @@
 'use server'
 
 import { cookies } from "next/headers";
-import { encodeUid } from "@/app/lib/userId";
-import {upsertContactMediaKitViewed} from "@/app/lib/hubspot";
+import {createMediaKitSession, sessionCookieOptions} from "@/app/lib/mediaKitSession";
+import {MEDIA_KIT_VIEWED_OPTIONS, upsertContactMediaKitViewed} from "@/app/lib/hubspot";
 
 export async function subscribe(prevState: boolean, formData: FormData) {
-    const firstName = formData.get("firstName") as string | null;
-    const lastName = formData.get("lastName") as string | null;
-    const email: string | null = formData.get("email") as string | null;
-    const mediaKitPub = formData.get("mediaKitPub") as string | null;
-    const organizationNameValue = formData.get("organizationName");
-    const organizationName = typeof organizationNameValue === "string" ? organizationNameValue.trim() : "";
-
-    const subscriberInfo = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-    }
-    if (!subscriberInfo.email || !mediaKitPub || !organizationName) {
+    const field = (name: string) => {
+        const value = formData.get(name);
+        return typeof value === "string" ? value.trim() : "";
+    };
+    const firstName = field("firstName");
+    const lastName = field("lastName");
+    const email = field("email");
+    const mediaKitPub = field("mediaKitPub");
+    const organizationName = field("organizationName");
+    const subscriberInfo = {firstName, lastName, email};
+    if (!firstName || !organizationName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        || !Object.hasOwn(MEDIA_KIT_VIEWED_OPTIONS, mediaKitPub)
+        || [firstName, lastName, email, organizationName].some(value => value.length > 254)) {
         return false;
     }
 
@@ -39,22 +39,14 @@ export async function subscribe(prevState: boolean, formData: FormData) {
         return false;
     }
 
-    // Set em_uid cookie with HubSpot contact id for 180 days
     try {
-        const encoded = encodeUid({ version: "v1", vendor: "hs", id: contact.id });
-        const maxAge = 60 * 60 * 24 * 180; // 180 days in seconds
-        // Note: httpOnly is false because the client needs to read this cookie to bypass the form.
-        // Use SameSite=Lax to maintain CSRF protections for top-level navigations while remaining compatible.
-        (await cookies()).set("em_uid", encoded, {
-            httpOnly: false,
-            sameSite: "lax",
-            secure: process.env.NODE_ENV === "production",
-            path: "/",
-            maxAge,
+        const token = await createMediaKitSession({
+            contactId: contact.id, firstName, lastName, email, organizationName,
         });
-    } catch (e) {
-        // Non-fatal: proceed without cookie if something goes wrong
-        console.error("Failed to set em_uid cookie", e);
+        (await cookies()).set("em_uid", token, sessionCookieOptions);
+    } catch {
+        console.error("Failed to create secure media kit session; check MEDIA_KIT_SESSION_SECRET");
+        return false;
     }
 
     return true;

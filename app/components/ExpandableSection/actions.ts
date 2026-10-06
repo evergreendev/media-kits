@@ -1,6 +1,6 @@
 'use server'
 import {cookies} from 'next/headers'
-import {decodeUid} from "@/app/lib/userId";
+import {readMediaKitSession} from "@/app/lib/mediaKitSession";
 import {updateContactAdSizeViewed, updateContactMediaKitViewed} from "@/app/lib/hubspot";
 
 async function getHubSpotContactIdFromCookie() {
@@ -12,13 +12,13 @@ async function getHubSpotContactIdFromCookie() {
         return null
     }
 
-    const uid = decodeUid(emUid.value);
+    const uid = await readMediaKitSession(emUid.value);
 
     if (!uid) {
         return null
     }
 
-    return uid.id;
+    return uid.contactId;
 }
 
 export const updateMediaKitViewedForUser = async (mediaKitPub:string) => {

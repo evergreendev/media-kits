@@ -1,6 +1,10 @@
 ﻿import PrintMediaKit, {PrintKit} from "@/app/components/PrintMediaKit";
 
 const kit: PrintKit = {
+    reservation: {
+        label: "Reserve your spot in Impact today",
+        href: "/impact-magazine/reserve",
+    },
     title: "Impact magazine",
     kicker: "Savvy. Local. Broad.",
     slug: "impact-magazine",

@@ -20,17 +20,14 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
     const [state, action, pending] = useActionState(subscribe, false)
     const router = useRouter();
 
-    // If em_uid cookie exists on the client, redirect user straight to the media kit
+    // The server verifies the HttpOnly session before bypassing signup.
     useEffect(() => {
         if (!autoRedirectOnCookie) return;
         (async () => {
             try {
-                const match = document.cookie.match(/(?:^|; )em_uid=([^;]+)/);
-                if (match && match[1]) {
-                    const result = await updateMediaKitViewedForUser(mediaKitPub);
-                    if (result) {
-                        router.replace(`/${mediaKitPub}/media-kit`);
-                    }
+                const result = await updateMediaKitViewedForUser(mediaKitPub);
+                if (result) {
+                    router.replace(`/${mediaKitPub}/media-kit`);
                 }
             } catch {
                 // silently ignore

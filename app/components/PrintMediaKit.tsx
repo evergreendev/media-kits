@@ -15,6 +15,7 @@ export type PrintKit = {
     sections?: { title: string; items: { heading: string; body: string }[] }[];
     table?: { headers: string[]; rows: string[][] };
     note?: string; online?: string; website: string;
+    reservation?: { label: string; href: string };
 };
 
 const optionKey = (value: string) => value.toLowerCase()
@@ -47,6 +48,10 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
                               style={{color: kit.color}}>{kit.kicker}</p>}
             <h1 className="text-4xl font-black tracking-tight sm:text-6xl" style={{color: kit.color}}>{kit.title}</h1>
             <p className="mx-auto mt-6 max-w-3xl text-left font-serif text-lg leading-8 sm:text-xl">{kit.intro}</p>
+            {kit.reservation && <a href={kit.reservation.href}
+                className="mt-6 inline-flex rounded-lg bg-slate-900 px-6 py-4 text-lg font-bold text-white shadow-sm hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4">
+                {kit.reservation.label}
+            </a>}
             <div
                 className={`mx-auto mt-8 grid max-w-4xl gap-5 ${kit.hero.length > 1 ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-1"}`}>
                 {kit.hero.map((image, i) => <Image key={image.src} src={image.src} alt={image.alt} width={900}
@@ -81,6 +86,10 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
                                                                              tag={`${kit.slug}: ${row[0]}`}/>)}
             </div>
         </section>
+        {kit.reservation && <div className="px-5 pb-10 text-center sm:px-10"><a href={kit.reservation.href}
+            className="inline-flex rounded-lg bg-slate-900 px-6 py-4 text-lg font-bold text-white shadow-sm hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4">
+            {kit.reservation.label}
+        </a></div>}
         {kit.sections?.map(section => <section key={section.title}
                                                className="border-t border-slate-200 px-5 py-12 sm:px-10"><h2
             className="text-3xl font-black" style={{color: kit.color}}>{section.title}</h2>
@@ -91,6 +100,12 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
         {kit.note &&
             <aside className="mx-5 mb-10 rounded-xl p-6 sm:mx-10" style={{backgroundColor: `${kit.color}15`}}><p
                 className="whitespace-pre-line leading-7">{kit.note}</p></aside>}
+        {kit.reservation && <section className="border-t border-slate-200 bg-red-50 px-5 py-10 text-center sm:px-10">
+            <a href={kit.reservation.href}
+               className="inline-flex rounded-lg bg-slate-900 px-6 py-4 text-lg font-bold text-white shadow-sm hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4">
+                {kit.reservation.label}
+            </a>
+        </section>}
         <footer className="grid gap-6 px-6 py-9 text-white sm:grid-cols-3 sm:items-center"
                 style={{backgroundColor: kit.color}}>
             <div><p className="text-xl font-black">EVERGREEN MEDIA</p><p>329 Main St. Suite 1<br/>Rapid City, SD</p>

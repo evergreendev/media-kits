@@ -20,6 +20,30 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Media kit sessions and Impact form prefill
+
+Set `MEDIA_KIT_SESSION_SECRET` on the deployment to a random 32-byte hex string.
+Generate one with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`.
+Keep it server-only and stable across instances; rotating it invalidates existing sessions.
+Local development uses the secret in the ignored `.env` file.
+
+Signup still finds or creates a HubSpot contact. The `em_uid` cookie is now an
+authenticated, encrypted AES-GCM session with HttpOnly, SameSite=Lax, and Secure in
+production. It stores the visitor's submitted details, not retrieved CRM details.
+Unsigned legacy cookies are rejected; visitors must sign up again for prefill.
+Raw `hubspot_user_id` links still open the media kit but cannot establish identity
+or mutate CRM records. They do not provide prefill; use signup for that flow.
+
+Impact CTAs go through `/impact-magazine/reserve`, which verifies the cookie and
+redirects to the fixed HubSpot share URL with `firstname`, `lastname`, `email`, and
+company `name` query parameters. Invalid or absent sessions open the same form
+without parameters. Redirects are not cached. The supplied details appear in the
+destination URL and browser history, as required by HubSpot query-string prefill.
+No HubSpot tracking script is needed for this flow.
+
+Run `node scripts/test-media-kit-session.cjs` to check encryption, tampering,
+expiration, legacy-cookie rejection, key rotation, and URL encoding.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
