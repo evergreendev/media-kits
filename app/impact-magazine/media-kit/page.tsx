@@ -24,16 +24,13 @@ const kit: PrintKit = {
     },
     sections: [{
         title: "2026 calendar",
-        items: [{
-            heading: "January\/February",
-            body: "Ad deadline 12/9/25\nIn-home 12/30\/31/25"
-        }, {heading: "March\/April", body: "Ad deadline 2/10\nIn-home 2/26\/27"}, {
+        items: [{heading: "March\/April", body: "Ad deadline 2/10\nIn-home 2/26-27"}, {
             heading: "May\/June",
-            body: "Ad deadline 4/7\nIn-home 4/30\/5/1"
-        }, {heading: "July\/August", body: "Ad deadline 6/9\nIn-home 6/25\/26"}, {
+            body: "Ad deadline 4/7\nIn-home 4/30-5/1"
+        }, {heading: "July\/August", body: "Ad deadline 6/9\nIn-home 6/25-26"}, {
             heading: "September\/October",
-            body: "Ad deadline 8/11\nIn-home 8/27\/28"
-        }, {heading: "November\/December", body: "Ad deadline 10/6\nIn-home 10/29\/30"}]
+            body: "Ad deadline 8/11\nIn-home 8/27-28"
+        }, {heading: "November\/December", body: "Ad deadline 10/6\nIn-home 10/29-30"}]
     }, {
         title: "Why do coupons count?",
         items: [{
