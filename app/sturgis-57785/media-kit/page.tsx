@@ -1,6 +1,10 @@
 import PrintMediaKit, {PrintKit} from "@/app/components/PrintMediaKit";
 
 const kit: PrintKit = {
+    reservation: {
+        label: "Schedule a call",
+        href: "/sturgis-57785/schedule-call",
+    },
     title: "57785 — The Spirit of Sturgis",
     kicker: "Community & tourism magazine",
     slug: "sturgis-57785",
