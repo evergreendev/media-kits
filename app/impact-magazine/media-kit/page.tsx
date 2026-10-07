@@ -1,6 +1,10 @@
 ﻿import PrintMediaKit, {PrintKit} from "@/app/components/PrintMediaKit";
 
 const kit: PrintKit = {
+    calculator: {
+        label: "Estimate your return with our ROI calculator →",
+        href: "/impact-magazine/roi-calculator",
+    },
     reservation: {
         label: "Reserve your spot in Impact today",
         href: "/impact-magazine/reserve",

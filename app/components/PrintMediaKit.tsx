@@ -7,6 +7,7 @@ import halfPageHIcon from "@/public/ad-sizes/half-h.png";
 import halfPageVIcon from "@/public/ad-sizes/half-v.png";
 import quarterPageIcon from "@/public/ad-sizes/quarter.png";
 import {ReactNode} from "react";
+import ImpactCTA from "@/app/components/ImpactCTA";
 
 export type PrintKit = {
     title: string; kicker?: string; intro: string; slug: string; color: string;
@@ -16,6 +17,7 @@ export type PrintKit = {
     table?: { headers: string[]; rows: string[][] };
     note?: string; online?: string; website: string;
     reservation?: { label: string; href: string };
+    calculator?: { label: string; href: string };
 };
 
 const optionKey = (value: string) => value.toLowerCase()
@@ -48,7 +50,7 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
                               style={{color: kit.color}}>{kit.kicker}</p>}
             <h1 className="text-4xl font-black tracking-tight sm:text-6xl" style={{color: kit.color}}>{kit.title}</h1>
             <p className="mx-auto mt-6 max-w-3xl text-left font-serif text-lg leading-8 sm:text-xl">{kit.intro}</p>
-            {kit.reservation && <a href={kit.reservation.href}
+            {kit.slug === "impact-magazine" ? <div className="mx-auto mt-8 max-w-2xl"><ImpactCTA/></div> : kit.reservation && <a href={kit.reservation.href}
                 className="mt-6 inline-flex rounded-lg bg-slate-900 px-6 py-4 text-lg font-bold text-white shadow-sm hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4">
                 {kit.reservation.label}
             </a>}
@@ -68,6 +70,10 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
         </section>
         <section className="px-5 py-12 sm:px-10">
             <h2 className="text-3xl font-black" style={{color: kit.color}}>Advertising formats &amp; rates</h2>
+            {kit.calculator && kit.slug !== "impact-magazine" && <Link href={kit.calculator.href}
+                className="mt-4 inline-flex font-bold underline underline-offset-4 hover:text-slate-600 focus-visible:outline-2 focus-visible:outline-offset-4">
+                {kit.calculator.label}
+            </Link>}
             <div className="mt-6 flex flex-wrap justify-center gap-4">
                 {kit.formats.map(format => {
                     const rate = matchingRate(format.name);
@@ -86,7 +92,7 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
                                                                              tag={`${kit.slug}: ${row[0]}`}/>)}
             </div>
         </section>
-        {kit.reservation && <div className="px-5 pb-10 text-center sm:px-10"><a href={kit.reservation.href}
+        {kit.slug === "impact-magazine" ? <div className="px-5 pb-10 sm:px-10"><ImpactCTA/></div> : kit.reservation && <div className="px-5 pb-10 text-center sm:px-10"><a href={kit.reservation.href}
             className="inline-flex rounded-lg bg-slate-900 px-6 py-4 text-lg font-bold text-white shadow-sm hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4">
             {kit.reservation.label}
         </a></div>}
@@ -100,7 +106,7 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
         {kit.note &&
             <aside className="mx-5 mb-10 rounded-xl p-6 sm:mx-10" style={{backgroundColor: `${kit.color}15`}}><p
                 className="whitespace-pre-line leading-7">{kit.note}</p></aside>}
-        {kit.reservation && <section className="border-t border-slate-200 bg-red-50 px-5 py-10 text-center sm:px-10">
+        {kit.slug === "impact-magazine" ? <section className="border-t border-red-100 px-5 py-10 sm:px-10"><ImpactCTA prominent/></section> : kit.reservation && <section className="border-t border-slate-200 bg-red-50 px-5 py-10 text-center sm:px-10">
             <a href={kit.reservation.href}
                className="inline-flex rounded-lg bg-slate-900 px-6 py-4 text-lg font-bold text-white shadow-sm hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4">
                 {kit.reservation.label}
