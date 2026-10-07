@@ -92,7 +92,7 @@ export default function PrintMediaKit({kit}: { kit: PrintKit }) {
                                                                              tag={`${kit.slug}: ${row[0]}`}/>)}
             </div>
         </section>
-        {kit.slug === "impact-magazine" ? <div className="px-5 pb-10 sm:px-10"><ImpactCTA/></div> : kit.reservation && <div className="px-5 pb-10 text-center sm:px-10"><a href={kit.reservation.href}
+        {kit.slug === "impact-magazine" ? <div className="px-5 pb-10 sm:px-10"><ImpactCTA/></div> : kit.slug !== "sturgis-57785" && kit.reservation && <div className="px-5 pb-10 text-center sm:px-10"><a href={kit.reservation.href}
             className="inline-flex rounded-lg bg-slate-900 px-6 py-4 text-lg font-bold text-white shadow-sm hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-4">
             {kit.reservation.label}
         </a></div>}
