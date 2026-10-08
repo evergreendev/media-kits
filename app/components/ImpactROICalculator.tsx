@@ -30,14 +30,14 @@ export default function ImpactROICalculator() {
     const [issues, setIssues] = useState("1");
     const [size, setSize] = useState<AdSize | "">("");
     const [saleValue, setSaleValue] = useState("25");
-    const [responseRate, setResponseRate] = useState("0.05");
+    const [responseRate, setResponseRate] = useState("0.005");
     const reach = 60000;
     const issueCount = Number(issues);
     const sale = Number(saleValue);
     const response = Number(responseRate);
     const validIssues = issues !== "" && Number.isInteger(issueCount) && issueCount >= 1 && issueCount <= 12;
     const validSale = saleValue !== "" && Number.isFinite(sale) && sale >= 0;
-    const validResponse = responseRate !== "" && Number.isFinite(response) && response >= 0.05 && response <= 100;
+    const validResponse = responseRate !== "" && Number.isFinite(response) && response >= 0.005 && response <= 100;
     const valid = validIssues && validSale && validResponse;
     const cost = size && validIssues ? rates[size][issueCount === 12 ? 2 : issueCount >= 6 ? 1 : 0] : 0;
     const customers = reach * response / 100;
