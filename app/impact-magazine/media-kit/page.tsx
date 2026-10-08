@@ -10,10 +10,14 @@ const kit: PrintKit = {
         href: "/impact-magazine/reserve",
     },
     title: "Impact magazine",
-    kicker: "Savvy. Local. Broad.",
+    kicker: "Your customers are busy. Impact makes it easy for them to find you.",
     slug: "impact-magazine",
     color: "#dd3028",
-    intro: "Consumers today have less free time than ever. The last thing they want is to sort through emails, websites, or newspapers to find the best local deals. Impact magazine takes away the guesswork by bringing local coupons and sales directly to their mailbox. Teaming up with us puts your business in front of over 60,000 households and businesses in the Black Hills. Impact magazine is easy for you, and even easier for your customers.",
+    intro: "Between work, family, and a feed that never stops scrolling, local shoppers don't have time to dig\n" +
+        "through inboxes and websites for the best deals in town. Impact Magazine does the work for them,\n" +
+        "delivering local offers, sales, and coupons straight to their mailbox in a format they actually keep on the\n" +
+        "counter. Partner with Impact and your business lands in front of more than 60,000 Black Hills\n" +
+        "households and businesses. Simple for you, effortless for your customers.",
     stats: [["6X", "Six issues printed annually"], ["60K", "Mailboxes homes & businesses"], ["1.1¢", "As little as 1.1¢ per prospect reached"]],
     hero: [{
         src: "/media-kit/impact-magazine/visual-01.png",
