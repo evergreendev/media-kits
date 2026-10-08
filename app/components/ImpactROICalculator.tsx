@@ -30,8 +30,8 @@ export default function ImpactROICalculator() {
     const [issues, setIssues] = useState("1");
     const [size, setSize] = useState<AdSize | "">("");
     const [saleValue, setSaleValue] = useState("25");
-    const [responseRate, setResponseRate] = useState("0.25");
-    const reach = 58000;
+    const [responseRate, setResponseRate] = useState("0.05");
+    const reach = 60000;
     const issueCount = Number(issues);
     const sale = Number(saleValue);
     const response = Number(responseRate);
