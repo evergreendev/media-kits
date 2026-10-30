@@ -1,6 +1,8 @@
+import {Suspense} from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MediaKitSourceTracker from "./components/MediaKitSourceTracker";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geistSans = Geist({
@@ -29,6 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <GoogleAnalytics gaId="G-EB1YW9R5QE" />
+        <Suspense fallback={null}><MediaKitSourceTracker /></Suspense>
         {children}
       </body>
     </html>

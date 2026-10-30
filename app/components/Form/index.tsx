@@ -3,7 +3,7 @@ import Link from "next/link";
 import {StaticImageData} from "next/image";
 import Image from "next/image";
 import { subscribe } from "./actions";
-import {useActionState, useEffect} from "react";
+import {useActionState, useEffect, useState} from "react";
 import { useRouter } from "next/navigation";
 import {updateMediaKitViewedForUser} from "@/app/components/ExpandableSection/actions";
 
@@ -19,29 +19,34 @@ type Props = {
 const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuccess = true, simple = false, showDirectLink = true}: Props) => {
     const [state, action, pending] = useActionState(subscribe, false)
     const router = useRouter();
+    const [source, setSource] = useState("");
+    useEffect(() => {
+        setSource(new URLSearchParams(window.location.search).get("source")?.trim() ?? "");
+    }, []);
+    const mediaKitUrl = `/${mediaKitPub}/media-kit${source ? `?source=${encodeURIComponent(source)}` : ""}`;
 
     // The server verifies the HttpOnly session before bypassing signup.
     useEffect(() => {
         if (!autoRedirectOnCookie) return;
         (async () => {
             try {
-                const result = await updateMediaKitViewedForUser(mediaKitPub);
+                const result = await updateMediaKitViewedForUser(mediaKitPub, new URLSearchParams(window.location.search).get("source") ?? undefined);
                 if (result) {
-                    router.replace(`/${mediaKitPub}/media-kit`);
+                    router.replace(mediaKitUrl);
                 }
             } catch {
                 // silently ignore
             }
         })();
-    }, [autoRedirectOnCookie, mediaKitPub, router]);
+    }, [autoRedirectOnCookie, mediaKitPub, mediaKitUrl, router]);
 
     
     useEffect(() => {
         if (!autoRedirectOnSuccess) return;
         if (state){
-            router.replace(`/${mediaKitPub}/media-kit`);
+            router.replace(mediaKitUrl);
         }
-    },[autoRedirectOnSuccess, mediaKitPub, router, state])
+    },[autoRedirectOnSuccess, mediaKitUrl, router, state])
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-white text-black rounded-lg shadow-md">
@@ -98,6 +103,7 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
                         required
                     />
                 </div>
+                <input type="hidden" name="source" value={source}/>
                 <input type="hidden" name="mediaKitPub" value={mediaKitPub}/>
                 <button
                     type="submit"
@@ -122,7 +128,7 @@ const Form = ({mediaKitPub, logo, autoRedirectOnCookie = true, autoRedirectOnSuc
             </form>
 
             {!simple && showDirectLink && (
-                <Link href={`/${mediaKitPub}/media-kit`} className="text-sm text-gray-500 hover:text-gray-700">
+                <Link href={mediaKitUrl} className="text-sm text-gray-500 hover:text-gray-700">
                     Just show me the media kit →
                 </Link>
             )}

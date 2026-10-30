@@ -58,3 +58,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+Media kit links support `?source=newsletter` on all publication entry and media-kit URLs.
+A nonblank source updates the contact property `media_kit_visit_source` during signup
+or on visits with a verified session. Missing or blank sources leave it unchanged.
+Anonymous direct visits cannot update a contact until signup identifies the visitor.

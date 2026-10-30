@@ -21,7 +21,7 @@ async function getHubSpotContactIdFromCookie() {
     return uid.contactId;
 }
 
-export const updateMediaKitViewedForUser = async (mediaKitPub:string) => {
+export const updateMediaKitViewedForUser = async (mediaKitPub:string, source?: string) => {
     const contactId = await getHubSpotContactIdFromCookie()
 
     if (!contactId) {
@@ -29,7 +29,7 @@ export const updateMediaKitViewedForUser = async (mediaKitPub:string) => {
     }
     
     try {
-        const contact = await updateContactMediaKitViewed(contactId, mediaKitPub)
+        const contact = await updateContactMediaKitViewed(contactId, mediaKitPub, undefined, source)
         return contact ? mediaKitPub : null
     } catch (e) {
         console.error("Failed to update HubSpot media_kit_viewed", e);

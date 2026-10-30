@@ -14,6 +14,7 @@ export async function subscribe(prevState: boolean, formData: FormData) {
     const email = field("email");
     const mediaKitPub = field("mediaKitPub");
     const organizationName = field("organizationName");
+    const source = field("source");
     const subscriberInfo = {firstName, lastName, email};
     if (!firstName || !organizationName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
         || !Object.hasOwn(MEDIA_KIT_VIEWED_OPTIONS, mediaKitPub)
@@ -29,6 +30,7 @@ export async function subscribe(prevState: boolean, formData: FormData) {
             lastName: subscriberInfo.lastName,
             mediaKitPub,
             organizationName,
+            source,
         });
     } catch (e) {
         console.error("Failed to update HubSpot contact", e);
