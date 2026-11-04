@@ -35,14 +35,17 @@ const kit: PrintKit = {
         rows: [["Cover Package", "$2,080", "$2,080", "$2,080"], ["Full Page", "$1,935", "$1,835", "$1,735"], ["Half Page", "$1,035", "$985", "$935"], ["Quarter Page", "$635", "$595", "$575"]]
     },
     sections: [{
-        title: "2026 calendar",
-        items: [{heading: "March\/April", body: "Ad deadline 2/10\nIn-home 2/26-27"}, {
+        title: "2027 calendar",
+        items: [{heading: "January\/February", body: "Ad deadline 12/4/26\nIn-home 12/30/26"}, {
+            heading: "March\/April",
+            body: "Ad deadline 2/1/27\nIn-home 2/26/27"
+        }, {
             heading: "May\/June",
-            body: "Ad deadline 4/7\nIn-home 4/30-5/1"
-        }, {heading: "July\/August", body: "Ad deadline 6/9\nIn-home 6/25-26"}, {
+            body: "Ad deadline 4/5/27\nIn-home 4/28/27"
+        }, {heading: "July\/August", body: "Ad deadline 6/2/27\nIn-home 6/25/27"}, {
             heading: "September\/October",
-            body: "Ad deadline 8/11\nIn-home 8/27-28"
-        }, {heading: "November\/December", body: "Ad deadline 10/6\nIn-home 10/29-30"}]
+            body: "Ad deadline 8/4/27\nIn-home 8/27/27"
+        }, {heading: "November\/December", body: "Ad deadline 10/6/27\nIn-home 10/29/27"}]
     }, {
         title: "Why do coupons count?",
         items: [{
